@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('head/index.html', {
+    "page-title": "Main page"
+})
+<body>
+    @@include('header/index.html')
+    <main>
+        <section class="naming container">
+            <div class="naming__title-wrapper">
+                <h1 class="naming__title">Antonina Antoninovna</h1>
+                <div class="naming__description-wrapper">
+                    <p class="naming__description">Future front-end developer 23 years old, Tolyatti</p>                    
+                    @@include('mobile-menu-burger/index.html', {"addition-class": "naming__menu-burger"})
+                </div>
+            </div>
+            <div class="naming__portrait-img-wrapper">
+                <img class="naming__portrait-img_desctop" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" >
+                <img class="naming__portrait-img_tablet" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465" >
+                <img class="naming__portrait-img_mobile" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465" >
+            </div>
+            @@include('paging-dotted/index.html')                
+        </section>
+        <section class="about">
+            <h2 class="about__title">About me</h2>
+            <div class="about__statement-container">
+                <div class="about__statement">Aliquam tortor molestie turpis est tristique. Congue diam orci amet quis semper ut. Vitae aenean nibh facilisis urna, ultricies euismod nunc. Commodo fringilla sit hendrerit consequat. Vel ac elit vel sagittis.</div>
+                <div class="about__statement">Tincidunt id quis pellentesque rutrum pretium. Egestas aliquam dictum ipsum nisl, sed pulvinar. Commodo elit sed a fermentum non justo. Etiam platea consectetur.</div>
+                <div class="about__statement">Quam ipsum odio tellus etiam aliquam dolor ut hendrerit. Felis risus nec vitae nunc ultricies placerat. Nullam nec felis eu id dolor pellentesque tristique. </div>
+            </div>                                
+        </section>
+        <section class="skills">
+            <h2 class="skills__title">Skills</h2>
+            <p class="skills__description">I work in such programs as</p>
+            <ul class="skills__list skills__container">
+                <li class="skills__item">
+                    <img class="skills__item-img" src="/static/images/skill-html.svg" alt="">
+                    <p class="skills__item-title">HTML 5</p>
+                    <div class="skills__item-progress-wrapper">
+                        <p class="skills__item-progress-percent">85%</p>
+                        @@include('progress-bar/index.html', {"bar-width": "85%"})                                
+                    </div>
+                </li>
+                <li class="skills__item">
+                    <img class="skills__item-img" src="/static/images/skill-css.svg" alt="">
+                    <p class="skills__item-title">CSS/SCSS</p>
+                    <div class="skills__item-progress-wrapper">
+                        <p class="skills__item-progress-percent">55%</p>
+                        @@include('progress-bar/index.html', {"bar-width": "55%"})
+                    </div>
+                </li>
+                <li class="skills__item">
+                    <img class="skills__item-img" src="/static/images/skill-js.svg" alt="">
+                    <p class="skills__item-title">JavaScript</p>
+                    <div class="skills__item-progress-wrapper">
+                        <p class="skills__item-progress-percent">5%</p>
+                        @@include('progress-bar/index.html', {"bar-width": "5%"})
+                    </div>
+                </li>
+                <li class="skills__item">
+                    <img class="skills__item-img" src="/static/images/skill-git.svg" alt="">
+                    <p class="skills__item-title">Git/GitHub</p>
+                    <div class="skills__item-progress-wrapper">
+                        <p class="skills__item-progress-percent">15%</p>
+                        @@include('progress-bar/index.html', {"bar-width": "15%"})
+                    </div>
+                </li>
+                <li class="skills__item">
+                    <img class="skills__item-img" src="/static/images/skill-figma.svg" alt="">
+                    <p class="skills__item-title">Figma</p>
+                    <div class="skills__item-progress-wrapper">
+                        <p class="skills__item-progress-percent">80%</p>
+                        @@include('progress-bar/index.html', {"bar-width": "80%"})
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="portfolio">
+            <h2 class="portfolio__title">Portfolio</h2>
+            <div class="portfolio__wrapper container">
+                <ul class="portfolio__list">
+                    <li class="portfolio__item">                            
+                        <img class="portfolio__img_desctop" src="/static/images/Portfolio-site_desctop.jpg" alt="">
+                        <img class="portfolio__img_tablet" src="/static/images/Portfolio-site_tablet.jpg" alt="">
+                        <img class="portfolio__img_mobile" src="/static/images/Portfolio-site_mobile.jpg" alt="">
+                        <div class="portfolio__banner">
+                            <h4 class="portfolio__banner-title"><a href="#">Learning site for DL Academy courses</a></h4>
+                            <p class="portfolio__banner-description">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+                        </div>
+                    </li>
+                    <li class="portfolio__item portfolio__item_hidden">
+                        <img class="portfolio__img_desctop" src="/static/images/Portfolio-site_desctop.jpg" alt="">
+                        <img class="portfolio__img_tablet" src="/static/images/Portfolio-site_tablet.jpg" alt="">
+                        <img class="portfolio__img_mobile" src="/static/images/Portfolio-site_mobile.jpg" alt="">
+                        <div class="portfolio__banner">
+                            <h4 class="portfolio__banner-title"><a href="#">Learning site for DL Academy courses</a></h4>
+                            <p class="portfolio__banner-description">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+                        </div>
+                    </li>
+                    <li class="portfolio__item portfolio__item_hidden">
+                        <img class="portfolio__img_desctop" src="/static/images/Portfolio-site_desctop.jpg" alt="">
+                        <img class="portfolio__img_tablet" src="/static/images/Portfolio-site_tablet.jpg" alt="">
+                        <img class="portfolio__img_mobile" src="/static/images/Portfolio-site_mobile.jpg" alt="">
+                        <div class="portfolio__banner">
+                            <h4 class="portfolio__banner-title"><a href="#">Learning site for DL Academy courses</a></h4>
+                            <p class="portfolio__banner-description">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+                        </div>
+                    </li>
+                    <li class="portfolio__item portfolio__item_hidden">
+                        <img class="portfolio__img_desctop" src="/static/images/Portfolio-site_desctop.jpg" alt="">
+                        <img class="portfolio__img_tablet" src="/static/images/Portfolio-site_tablet.jpg" alt="">
+                        <img class="portfolio__img_mobile" src="/static/images/Portfolio-site_mobile.jpg" alt="">
+                        <div class="portfolio__banner">
+                            <h4 class="portfolio__banner-title"><a href="#">Learning site for DL Academy courses</a></h4>
+                            <p class="portfolio__banner-description">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+                        </div>
+                    </li>
+                </ul>
+                <button class="portfolio__btn portfolio__btn-aft" disabled>
+                    <svg width="25" height="43" viewBox="0 0 25 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="21.1641" y="43" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(-135 21.1641 43)" fill="#070707"/>
+                        <rect x="25" y="4.51978" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(135 25 4.51978)" fill="#070707"/>
+                    </svg>
+                </button>
+                <button class="portfolio__btn portfolio__btn-fwd">
+                    <svg width="25" height="43" viewBox="0 0 25 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3.83594" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(45 3.83594 0)" fill="#070707"/>
+                        <rect y="38.4802" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(-45 0 38.4802)" fill="#070707"/>
+                    </svg>
+                </button>
+            </div>
+        </section>        
+    </main>
+    @@include('footer/index.html')
+    @@include('sign-in-modal/index.html')
+    @@include('register-modal/index.html')
+    @@include('send-message-modal/index.html')
+    <script src="scripts.js"></script>
+</body>
+</html>

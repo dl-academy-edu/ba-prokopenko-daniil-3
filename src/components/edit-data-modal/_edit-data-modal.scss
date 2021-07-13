@@ -1,0 +1,35 @@
+.edit-data-form {
+    width: 680px;
+    height: 504px;
+    &__uploadfile {
+        width: 288px;
+    }
+    &__submit-changes-btn {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .edit-data-form {
+        &__close-btn {
+            right: 0px;
+			top: -35px;
+		}
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .edit-data-form {
+        width: 100%;
+        height: 568px;
+        &__form {
+            padding-top: 70px;
+        }
+        &__close-btn {
+			top: 20px;
+		}
+        &__uploadfile {
+            width: 100%;
+        }
+    }
+}

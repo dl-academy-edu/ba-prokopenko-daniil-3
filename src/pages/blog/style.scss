@@ -1,0 +1,46 @@
+.footer {
+    background-color: #F6F6F6;
+}
+
+.myblog {
+    margin-bottom: 60px;
+    &__heading {
+        padding-bottom: 20px;
+        border-bottom: 2px solid #E5E5E5;
+        &-title {
+            width: 50%;
+            &-burger-wrapper {
+                margin-bottom: 40px; 
+            }            
+        }
+        &-menu-burger {
+            padding-top: 20px;
+        }
+    }
+    &__main {
+        margin-bottom: 30px;
+        &-item:not(:last-child) {
+            border-bottom: 2px solid #E5E5E5;  // todo not last child
+            // padding: 20px 0;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .myblog {
+        padding: 40px 0 60px 0;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .myblog {
+        padding: 40px 0 60px 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .myblog {
+        padding: 30px 0 40px 0;
+    }
+}
+

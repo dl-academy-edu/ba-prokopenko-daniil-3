@@ -1,0 +1,29 @@
+.send-message-form {
+    width: 680px;
+    height: 540px;
+    &__textarea {
+        height: 150px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .send-message-form {
+        &__close-btn {
+            right: 0px;
+			top: -35px;
+		}
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .send-message-form {
+        width: 100%;
+        height: 568px;
+        &__form {
+            padding-top: 120px;
+        }
+        &__close-btn {
+			top: 20px;
+		}
+    }
+}

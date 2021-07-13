@@ -1,0 +1,16 @@
+.mobile__menu-burger {
+    display: none;
+    cursor: pointer;
+}
+
+.title-burger-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+@media screen and (max-width: 767px) {
+    .mobile__menu-burger {
+        display: block;
+    }
+}

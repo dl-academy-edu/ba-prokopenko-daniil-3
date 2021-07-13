@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('head/index.html', {
+    "page-title": "My profile"
+})
+<body>
+    @@include('header/index.html')
+    <main class="container">
+        <section class="myprofile">
+            <div class="title-burger-wrapper myprofile__title-burger-wrapper">
+                <h1 class="myprofile__title">My profile</h1>
+                @@include('mobile-menu-burger/index.html', {"addition-class": "myprofile__menu-burger"})
+            </div>
+            <div class="myprofile__wrapper">
+                <div class="myprofile__img-wrapper">
+                    <img class="myprofile__img" src="/static/images/profile-image.jpg" alt="">
+                </div>
+                <div class="myprofile__data">
+                    <p class="myprofile__attr">Name: <span class="myprofile__value">Ksenia</span></p>
+                    <p class="myprofile__attr">Surname: <span class="myprofile__value">Larioshkina</span></p>
+                    <p class="myprofile__attr">Email: <span class="myprofile__value">larioshkina@gmail.com</span></p>
+                    <p class="myprofile__attr">Password: <span class="myprofile__value">****************</span></p>
+                    <p class="myprofile__attr">Location: <span class="myprofile__value">Moscow</span></p>
+                    <p class="myprofile__attr">Age: <span class="myprofile__value">17</span></p>
+                    <button class="button button-colorsheme-white change-password-btn">Change password</button>
+                    <button class="button button-colorsheme-white change-data-btn">Change other data</button>
+                    <button class="button button-colorsheme-white delete-account-btn">Delete account</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    @@include('edit-password-modal/index.html')
+    @@include('edit-data-modal/index.html')
+    @@include('successfully-modal/index.html')
+    @@include('unsuccessfully-modal/index.html')
+</body>
+</html>

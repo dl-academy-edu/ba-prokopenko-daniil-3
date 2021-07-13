@@ -1,0 +1,28 @@
+.progress-bar {
+    &__track {
+        background-color: #E5E5E5;
+        width: 142px;
+        height: 9px;
+    }
+    &__value {
+        display: block;
+        height: 9px;
+        background-color: #070707;
+    }    
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .progress-bar {
+        &__track {
+            width: 111px;
+        }  
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .progress-bar {
+        &__track {
+            width: 94px;
+        }  
+    }
+}

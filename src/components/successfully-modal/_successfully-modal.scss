@@ -1,0 +1,42 @@
+// !! common styles on this modal are applicable to unsuccessfully-modal as well.
+
+.successfully-form, .unsuccessfully-form {   //common styles
+    padding: 0;
+    border: none;
+    background: transparent;
+    text-align: center;
+    font-weight: 400;
+	font-size: 24px;
+	line-height: 29px;
+}
+
+.successfully-form {
+    width: 222px;
+    color: #03BC3C;
+}
+.unsuccessfully-form {
+    width: 475px;
+    color: #EB3617;
+}
+
+@media screen and (max-width: 767px) {
+    .successfully-form, .unsuccessfully-form { //common styles for mobile
+        width: 100%;
+        height: 568px;
+        justify-content: center;
+        align-items: center;        
+        &__close-btn {
+			top: 20px;
+		}
+    }
+    .successfully-form {
+        &__form {
+            width: 222px;             //not common
+        }
+    }
+    .unsuccessfully-form {
+        &__form {
+            width: 280px;
+        }
+    }
+}

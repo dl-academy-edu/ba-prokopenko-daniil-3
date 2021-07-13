@@ -1,0 +1,355 @@
+//defolt styles
+
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+*, *:after, *:before {
+    box-sizing: inherit;
+}
+
+nav, footer, header, aside {display: block;}
+
+html, body {
+	height: 100%;
+	width: 100%;
+	font-size: 14px;
+}
+	
+input, button, textarea, select {font: inherit;}
+
+input::-ms-clear {display:none;}
+
+button {cursor: pointer;}
+
+button::-moz-focus-inner {padding:0; border:0;}
+
+a, a:visited {
+    color:black;
+    text-decoration: none;
+}
+
+a:hover {text-decoration: none;}
+
+ul li, ol li {list-style: none;}
+
+img {display: block}
+
+h1, h2, h3, h4, h5, h6 {font-size: inherit; font-weight: 400;}
+
+//common styles
+
+
+body {
+    font-family: Gilroy, sans-serif;
+    font-style: normal;
+	margin: 0;
+	box-sizing: border-box;
+	font-size: 18px;
+	line-height: 21px;
+	font-weight: 400;
+    color: #070707;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 47px;
+	line-height: 57px;
+}
+
+h2 {
+	font-weight: 700;
+	font-size: 34px;
+	line-height: 41px;
+}
+
+h3 {
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 29px;
+}
+
+h4 {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 21px;
+}
+
+h5 {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.button {
+	// background: #070707;
+	// color: white;
+	cursor: pointer;
+	min-height: 42px;
+	border: 2.5px solid #070707;
+	border-radius: 30px;
+	padding: 10px 19px;
+	text-align: center;
+	display: block;
+	line-height: 22px;
+	font-weight: 700;
+	&-colorsheme {
+		&-white, &-confirm {
+			background: white;
+			color: #070707;
+			
+			&:disabled, &:disabled:hover {
+				color: #E5E5E5;
+				border-color: #E5E5E5;
+				background: white;
+			}
+		}
+		&-white {
+			&:hover {
+				background: #070707;
+				color: white;
+			}
+		}
+		&-confirm {
+			&:hover {
+				color: #828282;
+				border-color: #828282;
+			}
+		}
+		&-black {
+			background: #070707;
+			color: white;
+			&:hover {
+				background: white;
+				color: #070707;
+			}			
+		}
+		&-red {
+			background: white;
+			color: #EB3617;
+			border-color: #EB3617;
+			&:hover {
+				background: #EB3617;
+				color: white;
+			}
+		}
+		&-green {
+			background: white;
+			color: #03BC3C;
+			&:hover {
+				background: #03BC3C;
+				color: white;
+			}
+			
+		}
+	}
+}
+
+.text-input-field-common {
+    height: 50px;
+    border: 2.5px solid #E5E5E5;
+    display: block;
+	padding: 14px;
+    &:hover {
+        outline: none;
+        border-color:  #828282;
+    }
+    &:focus {
+        outline: none;
+        border-color:  #070707;
+    }
+}
+
+.required-field-common {color: red}
+
+.popup-overlay {
+    width: 100%;
+    height: 100vh;
+    background: rgba(246, 246, 246, 0.99);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 2;
+    &_open {
+        display: block;
+    }
+}
+
+.popup-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: none;
+	flex-direction: column;
+    z-index: 2;
+    background: white;
+    border: 2.5px solid #070707;
+    &_open {
+        display: flex;
+    }
+	&__wrapper {
+		display: flex;
+	}
+
+    &__close-btn {
+        background: transparent;
+        position: absolute;
+        top: 0px;
+        right: -35px;
+        cursor: pointer;
+        border: none;
+        padding: 0;
+		&:hover svg rect, &:active svg rect {
+			fill: #070707;
+		}
+        svg {
+            display: block;
+        }
+    }
+
+    &__fieldset {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;      
+    }
+    &__input-field, &__textarea {
+        width: 100%;
+    }
+	&__textarea {
+		resize: none;
+	}
+
+    &__label {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+		margin-bottom: 6px;
+		display: block;
+    }
+	&__label-confirm {
+		color: #E5E5E5;
+		cursor: pointer;
+	    padding: 2px 10px 2px 34px;
+		background: url(/static/images/checkbox-popup.svg) no-repeat 0 0;
+	}
+	&__uploadfile {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		&-label {
+			svg, p {
+				display: block;
+			}
+			svg {
+				margin-right: 10px;
+			}
+			&:hover .popup-form__uploadfile {
+				outline: none;
+				border-color:  #828282;
+			}
+			&:focus .popup-form__uploadfile {
+				outline: none;
+				border-color:  #070707;
+			}
+		}
+	}
+
+	input[type="checkbox"] {
+		display: none;
+	}
+	input[type="checkbox"]:hover + &__label-confirm, input[type="checkbox"]:focus + &__label-confirm {
+		color: #828282;
+		background: url(/static/images/checkbox-popup-hover.svg) no-repeat 0 0;
+	}
+	input[type="checkbox"]:checked + &__label-confirm {
+		color: #070707;
+		background: url(/static/images/checkbox-popup-checked.svg) no-repeat 0 0;
+	}
+	input[type="file"] {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.popup-form {
+		transform: translate(-50%,-50%);
+		padding: 40px;
+		&__fieldset-block:first-child {
+			padding-right: 10px;
+		}
+		&__fieldset-block:last-child {
+			padding-left: 10px;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+	.container {
+		max-width: 648px;
+		width: 100%;
+		margin: 0 auto;
+	}
+	.popup-form {
+		transform: translate(-50%,-50%);
+		padding: 40px;
+		&__fieldset-block:first-child {
+			padding-right: 10px;
+		}
+		&__fieldset-block:last-child {
+			padding-left: 10px;
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.container {
+		max-width: 280px;
+		width: 100%;
+		margin: 0 auto;
+	}
+	.popup-form {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		border: none;
+		padding: 20px;
+		&__close-btn {
+			top: 20px;
+			left: 20px
+		}
+		&__wrapper {
+			flex-direction: column
+		}
+	}
+}
+
+
+// Components import
+@import "./header/header";
+@import "./footer/footer";
+@import "./mobile-menu-burger/mobile-menu-burger";
+@import "./paging-dotted/paging-dotted";
+@import "./paging-numbered/paging-numbered";
+@import "./progress-bar/progress-bar";
+@import "./blog-item/blog-item";
+@import "./blogs-control-panel/blogs-control-panel";
+@import "./sign-in-modal/sign-in-modal";
+@import "./register-modal/register-modal";
+@import "./send-message-modal/send-message-modal";
+@import "./edit-password-modal/edit-password-modal";
+@import "./edit-data-modal/edit-data-modal";
+@import "./successfully-modal/successfully-modal";
+@import "./unsuccessfully-modal/unsuccessfully-modal";
