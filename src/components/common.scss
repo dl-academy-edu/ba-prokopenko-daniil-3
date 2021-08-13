@@ -171,7 +171,39 @@ h5 {
     }
 }
 
-.required-field-common {color: red}
+.text-input-field_invalid {
+	border-color: #EB3617;
+}
+
+.text-input-field_valid {
+	border-color: #03BC3C;
+}
+
+.text-input-error, .text-input-checked {
+	font-size: 14px;
+}
+
+.text-input-error {
+	color: #EB3617;
+}
+
+.text-input-checked {
+	color: #03BC3C;
+}
+.hidden {
+	display: none;
+}
+
+.required-field-common {color: #EB3617;}
+
+form .checkbox-input-error {
+	color: #EB3617;
+	background: url(/static/images/checkbox-popup-error.svg) no-repeat 0 0;
+}
+
+// form .checkbox-input-checked {
+// 	color: #03BC3C;
+// }
 
 .popup-overlay {
     width: 100%;
