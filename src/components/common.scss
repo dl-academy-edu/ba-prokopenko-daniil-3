@@ -201,9 +201,41 @@ form .checkbox-input-error {
 	background: url(/static/images/checkbox-popup-error.svg) no-repeat 0 0;
 }
 
-// form .checkbox-input-checked {
-// 	color: #03BC3C;
-// }
+
+.slider {
+	margin: 50px auto;
+	user-select: none;
+	-webkit-user-drag: none;
+	&__wrapper {
+		overflow: hidden;
+	}
+	&__inner-wrapper {
+		display: flex;
+		height: 100%;
+		/* transition: transform 0.5s; */
+	}
+	&__slide {
+		display: flex;
+		flex-shrink: 0;
+		height: 465px;
+		align-items: center;
+		justify-content: center;
+		font-size: 24px;
+		color: #fff;
+		&-element {
+			user-select: none;
+			-webkit-user-drag: none;
+		}
+	}
+
+}
+
+.swiper {
+	&-button-next, &-button-prev {
+		color: #070707;
+		// font-size: 80px;
+	}
+}
 
 .popup-overlay {
     width: 100%;
@@ -368,13 +400,12 @@ form .checkbox-input-error {
 	}
 }
 
-
 // Components import
 @import "./header/header";
 @import "./footer/footer";
 @import "./mobile-menu-burger/mobile-menu-burger";
-@import "./paging-dotted/paging-dotted";
-@import "./paging-numbered/paging-numbered";
+@import "./pagination-dotted/pagination-dotted";
+@import "./pagination-numbered/pagination-numbered";
 @import "./progress-bar/progress-bar";
 @import "./blog-item/blog-item";
 @import "./blogs-control-panel/blogs-control-panel";

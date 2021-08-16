@@ -1,0 +1,113 @@
+/* page selection */
+
+$transition: .1s;
+
+.slider-bottom-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__button {
+        background-color: #fff;
+        border: none;
+        padding: 0;
+        transition: $transition;
+        svg {
+            display: block;
+        }       
+        &-arrow, &-arrow-elm {
+            transition: $transition;
+        }
+    }
+    &__button:not(:disabled) {
+        cursor: pointer;
+    }
+    &__button:not(:disabled):hover, &__button:not(:disabled):active {
+        cursor: pointer;
+    }
+    &__button:not(:disabled):hover &__button-arrow-elem, &__button:not(:disabled):active &__button-arrow-elem {
+        stroke: #828282;
+        cursor: pointer;
+    }
+    &__button:disabled &__button-arrow-elem {
+        stroke: #E5E5E5;
+    }
+    &__button:disabled, &__button:disabled &__button-arrow-elem {
+        cursor: default;
+    }
+
+    &__dot {
+		width: 10px;
+		height: 10px;
+		border: none;
+		padding: 0;
+		border-radius: 50%;
+		outline: none;
+		cursor: pointer;
+		transition: background-color 0.2s;
+		background-color: #E5E5E5;
+	}
+	&__dot:not(:last-child) {
+		margin-right: 5px;
+	}
+	&__dot_active {
+		background-color: #070707;
+	}
+	&__dot:not(&__dot_active):hover, &__dot:not(&__dot_active):focus {
+		background-color: #DADADA;
+	}
+
+}
+
+
+//need for blog page pagination TEMPORARY.
+.page-selecting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__button {
+        background-color: #fff;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        svg {
+            display: block;
+        }
+
+    }
+    &__radio-block {
+        display: flex;
+        input[type="radio"] {
+            display: none;
+        }
+    }
+    &__label {
+        cursor: pointer;
+        transition: $transition;
+    }
+    &__label-dotted {
+        padding: 4px;
+        &:hover circle {
+            fill: #828282;
+        }
+    }
+    &__label-numbered {
+        color: #E5E5E5;
+        padding: 5px;
+        &:hover {
+            color:#828282;
+        }
+    }
+    &__arrow, &__arrow-border {
+        transition: $transition;
+    }
+    & input[type="radio"]:checked + &__label-dotted circle {
+        fill:#070707;
+    }
+    & input[type="radio"]:checked + &__label-numbered {
+        color:#070707;
+    }
+    &__button:hover &__arrow, &__button:active &__arrow {
+        stroke: #828282;
+        // stroke-opacity: 1;
+    }
+}

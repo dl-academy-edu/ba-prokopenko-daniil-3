@@ -13,10 +13,13 @@
         &-wrapper {
         }
         &_desctop {
+            user-select: none;  
         }
         &_tablet {
+            user-select: none;  
         }
         &_mobile {
+            user-select: none;  
         }
     }
     &__menu-burger {
@@ -217,6 +220,9 @@
                 display: none;
             }
         }
+        &__slider-wrapper {
+            margin-bottom: 30px;
+        }
     }
     .portfolio {
         &__img_desctop {
@@ -265,6 +271,9 @@
             &_mobile {
                 display: none;
             }
+        }
+        &__slider-wrapper {
+            margin-bottom: 30px;
         }
     }
     .skills {
@@ -321,6 +330,9 @@
                 
             }
         }
+        &__slider-wrapper {
+            margin-bottom: 30px;
+        }
     }
     // .mobile__menu-burger {
     //     display: block;
@@ -375,3 +387,10 @@
         }
     }
 }
+
+// .swiper {
+// 	&-button-next, &-button-prev {
+// 		color: #070707;
+// 		font-size: 40px;
+// 	}
+// }

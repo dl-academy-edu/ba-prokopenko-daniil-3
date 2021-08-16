@@ -14,13 +14,54 @@
                     @@include('mobile-menu-burger/index.html', {"addition-class": "naming__menu-burger"})
                 </div>
             </div>
-            <div class="naming__portrait-img-wrapper">
-                <img class="naming__portrait-img_desctop" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" >
-                <img class="naming__portrait-img_tablet" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465" >
-                <img class="naming__portrait-img_mobile" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465" >
+
+            <!-- слайдер: -->
+            <div class="container naming__slider">
+                <div class="slider slider_js">
+                    <div class="slider__wrapper naming__slider-wrapper slider__wrapper_js">
+                        <div class="slider__inner-wrapper slider__inner-wrapper_js">
+
+                            <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" ondragstart="return false;" class="naming__portrait-img_desctop slider__slide-element" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" 
+								   srcset="/static/images/portrait_desctop.jpg 1x, /static/images/portrait_desctop@2x.jpg 2x">
+                                <img draggable="false" unselectable="on" ondragstart="return false;" class="naming__portrait-img_tablet slider__slide-element" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465"
+								    srcset="/static/images/portrait_tablet.jpg 1x, /static/images/portrait_tablet@2x.jpg 2x">								
+                                <img draggable="false" unselectable="on" ondragstart="return false;" class="naming__portrait-img_mobile slider__slide-element" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465"
+									srcset="/static/images/portrait_mobile.jpg 1x, /static/images/portrait_mobile@2x.jpg 2x">
+                            </div>
+                            <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" ondragstart="return false;" class="naming__portrait-img_desctop slider__slide-element" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" 
+								   srcset="/static/images/portrait_desctop.jpg 1x, /static/images/portrait_desctop@2x.jpg 2x">
+                                <img draggable="false" unselectable="on" ondragstart="return false;" class="naming__portrait-img_tablet slider__slide-element" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465"
+								    srcset="/static/images/portrait_tablet.jpg 1x, /static/images/portrait_tablet@2x.jpg 2x">								
+                                <img draggable="false" unselectable="on" ondragstart="return false;" class="naming__portrait-img_mobile slider__slide-element" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465"
+									srcset="/static/images/portrait_mobile.jpg 1x, /static/images/portrait_mobile@2x.jpg 2x">
+                            </div>
+                            <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" ondragstart="return false;" class="naming__portrait-img_desctop slider__slide-element" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" 
+								   srcset="/static/images/portrait_desctop.jpg 1x, /static/images/portrait_desctop@2x.jpg 2x">
+                                <img draggable="false" unselectable="on" ondragstart="return false;" class="naming__portrait-img_tablet slider__slide-element" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465"
+								    srcset="/static/images/portrait_tablet.jpg 1x, /static/images/portrait_tablet@2x.jpg 2x">								
+                                <img draggable="false" unselectable="on" ondragstart="return false;" class="naming__portrait-img_mobile slider__slide-element" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465"
+									srcset="/static/images/portrait_mobile.jpg 1x, /static/images/portrait_mobile@2x.jpg 2x">
+                            </div>
+                            <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" ondragstart="return false;" class="naming__portrait-img_desctop slider__slide-element" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" 
+								   srcset="/static/images/portrait_desctop.jpg 1x, /static/images/portrait_desctop@2x.jpg 2x">
+                                <img draggable="false" unselectable="on" ondragstart="return false;" class="naming__portrait-img_tablet slider__slide-element" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465"
+								    srcset="/static/images/portrait_tablet.jpg 1x, /static/images/portrait_tablet@2x.jpg 2x">								
+                                <img draggable="false" unselectable="on" ondragstart="return false;" class="naming__portrait-img_mobile slider__slide-element" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465"
+									srcset="/static/images/portrait_mobile.jpg 1x, /static/images/portrait_mobile@2x.jpg 2x">
+                            </div>
+                        </div>
+                    </div>
+
+                    @@include('pagination-dotted/index.html')
+                </div>
             </div>
-            @@include('paging-dotted/index.html')                
         </section>
+
+
         <section class="about">
             <h2 class="about__title">About me</h2>
             <div class="about__statement-container">
@@ -77,7 +118,50 @@
         </section>
         <section class="portfolio">
             <h2 class="portfolio__title">Portfolio</h2>
-            <div class="portfolio__wrapper container">
+
+            <!-- swiper -->
+
+              <!-- Slider main container -->
+            <div class="container swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide portfolio__item">
+                        <img class="portfolio__img_desctop" src="/static/images/Portfolio-site_desctop.jpg" alt="">
+                        <img class="portfolio__img_tablet" src="/static/images/Portfolio-site_tablet.jpg" alt="">
+                        <img class="portfolio__img_mobile" src="/static/images/Portfolio-site_mobile.jpg" alt="">
+                        <div class="portfolio__banner">
+                            <h4 class="portfolio__banner-title"><a href="#">Learning site for DL Academy courses</a></h4>
+                            <p class="portfolio__banner-description">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide portfolio__item">
+                        <img class="portfolio__img_desctop" src="/static/images/Portfolio-site_desctop.jpg" alt="">
+                        <img class="portfolio__img_tablet" src="/static/images/Portfolio-site_tablet.jpg" alt="">
+                        <img class="portfolio__img_mobile" src="/static/images/Portfolio-site_mobile.jpg" alt="">
+                        <div class="portfolio__banner">
+                            <h4 class="portfolio__banner-title"><a href="#">Learning site for DL Academy courses</a></h4>
+                            <p class="portfolio__banner-description">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide portfolio__item">
+                        <img class="portfolio__img_desctop" src="/static/images/Portfolio-site_desctop.jpg" alt="">
+                        <img class="portfolio__img_tablet" src="/static/images/Portfolio-site_tablet.jpg" alt="">
+                        <img class="portfolio__img_mobile" src="/static/images/Portfolio-site_mobile.jpg" alt="">
+                        <div class="portfolio__banner">
+                            <h4 class="portfolio__banner-title"><a href="#">Learning site for DL Academy courses</a></h4>
+                            <p class="portfolio__banner-description">A simple multi-page static site. The design layout was in Figma. HTML and CSS were used. The site is responsive and cross-browser, but without adding interactivity via JavaScript.</p>
+                        </div>
+                    </div>
+                </div>
+
+            
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            <!-- <div class="portfolio__wrapper container">
                 <ul class="portfolio__list">
                     <li class="portfolio__item">                            
                         <img class="portfolio__img_desctop" src="/static/images/Portfolio-site_desctop.jpg" alt="">
@@ -128,7 +212,7 @@
                         <rect y="38.4802" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(-45 0 38.4802)" fill="#070707"/>
                     </svg>
                 </button>
-            </div>
+            </div> -->
         </section>        
     </main>
     @@include('footer/index.html')
@@ -136,6 +220,7 @@
     @@include('register-modal/index.html')
     @@include('send-message-modal/index.html')
     @@include('button-to-top/index.html')
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
