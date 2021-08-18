@@ -1,8 +1,7 @@
-/* page selection */
 
 $transition: .1s;
 
-.slider-bottom-panel {
+.pagination-panel {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,59 +54,24 @@ $transition: .1s;
 	&__dot:not(&__dot_active):hover, &__dot:not(&__dot_active):focus {
 		background-color: #DADADA;
 	}
+    &__pagination {
+        &-link {
+            font-weight: 700;
+            color: #E5E5E5;
+            &:hover, &:visited:hover {
+                color:#828282;
+            }
+            &:visited {
+                color: #E5E5E5;
+            }
 
-}
-
-
-//need for blog page pagination TEMPORARY.
-.page-selecting {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &__button {
-        background-color: #fff;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        svg {
-            display: block;
         }
-
-    }
-    &__radio-block {
-        display: flex;
-        input[type="radio"] {
-            display: none;
+        &-link:not(:last-child) {
+            margin-right: 5px;
+        }
+        .pagination-link_active {
+            color:#070707;
         }
     }
-    &__label {
-        cursor: pointer;
-        transition: $transition;
-    }
-    &__label-dotted {
-        padding: 4px;
-        &:hover circle {
-            fill: #828282;
-        }
-    }
-    &__label-numbered {
-        color: #E5E5E5;
-        padding: 5px;
-        &:hover {
-            color:#828282;
-        }
-    }
-    &__arrow, &__arrow-border {
-        transition: $transition;
-    }
-    & input[type="radio"]:checked + &__label-dotted circle {
-        fill:#070707;
-    }
-    & input[type="radio"]:checked + &__label-numbered {
-        color:#070707;
-    }
-    &__button:hover &__arrow, &__button:active &__arrow {
-        stroke: #828282;
-        // stroke-opacity: 1;
-    }
+
 }

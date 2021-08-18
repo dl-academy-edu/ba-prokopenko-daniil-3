@@ -400,6 +400,13 @@ form .checkbox-input-error {
 	}
 }
 
+
+// temporary class for script test 
+.active {
+	font-weight: 700;
+	color: #457bcb;
+}
+
 // Components import
 @import "./header/header";
 @import "./footer/footer";

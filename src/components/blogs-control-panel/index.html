@@ -1,68 +1,68 @@
 <div class="blogs-control-panel @@parent-class">
-    <div class="blogs-control-panel__row blogs-control-panel__row-1">
+    <form name = "filter" class="blogs-control-panel__row blogs-control-panel__row-1 filter-form_js">
         <div class="blogs-control-panel__column blogs-control-panel__column-tags">
             <h5 class="blogs-control-panel__column-title">Tags</h5>
             <div class="blogs-control-panel__column-wrapper blogs-control-panel__column-tags-wrapper">
-                <input type="checkbox" name="tag" id="tag-1" value="tag-1" checked>
+                <input type="checkbox" name="tags" id="tag-1" value="1" checked>
                 <label for="tag-1" class="checkbox-label-tag checkbox-label-tag-1"></label>
-                <input type="checkbox" name="tag" id="tag-2" value="tag-2">
+                <input type="checkbox" name="tags" id="tag-2" value="2">
                 <label for="tag-2" class="checkbox-label-tag checkbox-label-tag-2"></label>
-                <input type="checkbox" name="tag" id="tag-3" value="tag-3">
+                <input type="checkbox" name="tags" id="tag-3" value="3">
                 <label for="tag-3" class="checkbox-label-tag checkbox-label-tag-3"></label>
-                <input type="checkbox" name="tag" id="tag-4" value="tag-4">
+                <input type="checkbox" name="tags" id="tag-4" value="4">
                 <label for="tag-4" class="checkbox-label-tag checkbox-label-tag-4"></label>
-                <input type="checkbox" name="tag" id="tag-5" value="tag-5">
+                <input type="checkbox" name="tags" id="tag-5" value="5">
                 <label for="tag-5" class="checkbox-label-tag checkbox-label-tag-5"></label>
-                <input type="checkbox" name="tag" id="tag-6" value="tag-6">
+                <input type="checkbox" name="tags" id="tag-6" value="6">
                 <label for="tag-6" class="checkbox-label-tag checkbox-label-tag-6"></label>
-                <input type="checkbox" name="tag" id="tag-7" value="tag-7">
+                <input type="checkbox" name="tags" id="tag-7" value="7">
                 <label for="tag-7" class="checkbox-label-tag checkbox-label-tag-7"></label>
-                <input type="checkbox" name="tag" id="tag-8" value="tag-8">
+                <input type="checkbox" name="tags" id="tag-8" value="8">
                 <label for="tag-8" class="checkbox-label-tag checkbox-label-tag-8"></label>
             </div>
         </div>
         <div class="blogs-control-panel__column blogs-control-panel__column-views">
             <h5 class="blogs-control-panel__column-title">Views</h5>
-            <input type="radio" name="views" id="views_100" value="views_100">
+            <input type="radio" name="views" id="views_100" value="100">
             <label for="views_100" class="radio-label blogs-control-panel__column-views-label">100-500</label>
-            <input type="radio" name="views" id="views_500" value="views_500" checked>
+            <input type="radio" name="views" id="views_500" value="500" checked>
             <label for="views_500" class="radio-label blogs-control-panel__column-views-label">500-1000</label>
-            <input type="radio" name="views" id="views_1000" value="views_1000">
+            <input type="radio" name="views" id="views_1000" value="1000">
             <label for="views_1000" class="radio-label blogs-control-panel__column-views-label">1000-2000</label>
         </div>
         <div class="blogs-control-panel__column blogs-control-panel__column-comments">
             <h5 class="blogs-control-panel__column-title">Comments</h5>
-            <input type="checkbox" name="comments" id="comments-0" value="comments-0" checked>
+            <input type="checkbox" name="comments" id="comments-0" value="0" checked>
             <label for="comments-0" class="checkbox-label blogs-control-panel__column-comments-label">0</label>
-            <input type="checkbox" name="comments" id="comments-1" value="comments-1">
+            <input type="checkbox" name="comments" id="comments-1" value="1">
             <label for="comments-1" class="checkbox-label blogs-control-panel__column-comments-label">0-1</label>
-            <input type="checkbox" name="comments" id="comments-50" value="comments-50">
+            <input type="checkbox" name="comments" id="comments-50" value="50">
             <label for="comments-50" class="checkbox-label blogs-control-panel__column-comments-label">1-50</label>
         </div>
         <div class="blogs-control-panel__column blogs-control-panel__column-howshow">
             <h5 class="blogs-control-panel__column-title">How show?</h5>
-            <input type="radio" name="howshow" id="show-5" value="show-5" checked>
+            <input type="radio" name="howShow" id="show-5" value="5" checked>
             <label for="show-5" class="radio-label blogs-control-panel__column-howshow-label">show 5</label>
-            <input type="radio" name="howshow" id="show-10" value="show-10">
+            <input type="radio" name="howShow" id="show-10" value="10">
             <label for="show-10" class="radio-label blogs-control-panel__column-howshow-label">show 10</label>
         </div>
         <div class="blogs-control-panel__column blogs-control-panel__column-sortby">
             <h5 class="blogs-control-panel__column-title">Sort by</h5>
-            <input type="radio" name="sortby" id="sortby-date" value="sortby-date" checked>
+            <input type="radio" name="sortBy" id="sortby-date" value="date" checked>
             <label for="sortby-date" class="radio-label blogs-control-panel__column-sortby-label">date</label>
-            <input type="radio" name="sortby" id="sortby-title" value="sortby-title">
+            <input type="radio" name="sortBy" id="sortby-title" value="title">
             <label for="sortby-title" class="radio-label blogs-control-panel__column-sortby-label">title</label>
-            <input type="radio" name="sortby" id="sortby-views" value="sortby-views">
+            <input type="radio" name="sortBy" id="sortby-views" value="views">
             <label for="sortby-views" class="radio-label blogs-control-panel__column-sortby-label">views</label>
         </div>
         <div class="blogs-control-panel__column blogs-control-panel__column-resetform">
             <h5 class="blogs-control-panel__column-title blogs-control-panel__column-title-resetform">reset form</h5>
-            <button class="button button-colorsheme-white blogs-control-panel__column-apply-btn blogs-control-panel__column-apply-btn">Apply</button>
+            <button type="submit" class="button button-colorsheme-white blogs-control-panel__column-apply-btn blogs-control-panel__column-apply-btn">Apply</button>
         </div>
-    </div>
-    <div class="container blogs-control-panel__row blogs-control-panel__row-2">
+    </form>
+    <form name = "search" class="container blogs-control-panel__row blogs-control-panel__row-2">
         <label class="text-input-label" for="search-text-input">Name</label>
         <input class="text-input-field-common" type="text" id="search-text-input">
-        <button class="button button-colorsheme-white blogs-control-panel__column-search-btn">Search</button>
-    </div>
+        <button type="submit" class="button button-colorsheme-white blogs-control-panel__column-search-btn">Search</button>
+    </form>
 </div>

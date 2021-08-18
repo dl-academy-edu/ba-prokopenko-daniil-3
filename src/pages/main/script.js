@@ -418,7 +418,7 @@ function Slider (selector, options = {initialActiveIndex: 0}) {
     wrapper.addEventListener('mousedown', (e) => {
         checkerMouseDown = true;
         clientX = e.clientX;
-        console.log("мышка нажата");
+        // console.log("мышка нажата");
     });
     
     function endMouseEvent(e) {
@@ -471,10 +471,10 @@ function Slider (selector, options = {initialActiveIndex: 0}) {
 
     function createDot(index) {
         const dot = document.createElement('button');
-        dot.classList.add('slider-bottom-panel__dot');
+        dot.classList.add('pagination-panel__dot');
 
         if(index === activeSlideIndex) {
-            dot.classList.add('slider-bottom-panel__dot_active');
+            dot.classList.add('pagination-panel__dot_active');
 
         };
 
@@ -512,8 +512,9 @@ function Slider (selector, options = {initialActiveIndex: 0}) {
             innerWrapper.style.transform = `translateX(-${calculatedTranslate}px)`;
         };
         
-        dots[activeSlideIndex].classList.remove('slider-bottom-panel__dot_active');
-        dots[index].classList.add('slider-bottom-panel__dot_active');
+        dots[activeSlideIndex].classList.remove('pagination-panel__dot_active');
+        dots[index].classList.add('pagination-panel__dot_active');
+        localStorage.setItem('activeSlide', index);
         activeSlideIndex = index;
     };
 
@@ -532,7 +533,7 @@ function Slider (selector, options = {initialActiveIndex: 0}) {
 
 // вызов функции слайдера с параметрами
 const customSlider = new Slider('.slider_js', {
-    initialActiveIndex: 0,
+    initialActiveIndex: +localStorage.getItem('activeSlide') || 0,
 });
 
 // Swiper
@@ -546,3 +547,4 @@ const swiper = new Swiper('.swiper-container', {
     },
     
 });
+

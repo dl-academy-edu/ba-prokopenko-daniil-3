@@ -30,7 +30,7 @@ popupWindowHandler('mobile__menu-burger_js', 'popup-menu_js',
         })
     });
     window.addEventListener('scroll', (e) => {
-        console.log(window.pageYOffset);
+        // console.log(window.pageYOffset);
         if(window.pageYOffset > 1500) {
             button.classList.remove('button-to-top_hidden');
         }
@@ -356,3 +356,114 @@ function isValidPasswordRepeat(password, passwordRepeat) {
 function isValidAge(Age) {
     return (!isNaN(Age) && Age !== null && Age > 0);
 };
+
+//работа с фильтром
+
+function getParamsFromLocation() {
+    let searchParams = new URLSearchParams(location.search);
+    // console.log(searchParams.get('name'));
+    return {
+        tags: searchParams.getAll('tags'),
+        views: searchParams.get('views'),
+        comments: searchParams.getAll('comments'),
+        howShow: searchParams.get('howShow'),
+        sortBy: searchParams.get('sortBy'),
+        page: +searchParams.get('page') || 0,
+    };
+}
+
+// console.log(new URLSearchParams(location.search).toString());
+// console.log(getParamsFromLocation())
+// console.log(JSON.stringify(getParamsFromLocation()));
+
+function setDataToFilter(data) {
+    const form = document.forms.filter;
+    form.elements.tags.forEach(checkbox => {
+        checkbox.checked = data.tags.includes(checkbox.value);
+    });
+    form.elements.views.forEach(radio => {
+        radio.checked = data.views === radio.value
+    });
+    form.elements.comments.forEach(checkbox => {
+        checkbox.checked = data.comments.includes(checkbox.value);
+    });
+    form.elements.howShow.forEach(radio => {
+        radio.checked = data.howShow === radio.value
+    });
+    form.elements.sortBy.forEach(radio => {
+        radio.checked = data.sortBy === radio.value
+    });
+};
+
+function setSearchParams(data) {
+    let searchParams = new URLSearchParams();
+    data.tags.forEach(item => {
+        searchParams.append('tags', item);
+    });
+    if(data.views) {
+        searchParams.set('views', data.views);
+    };
+    data.comments.forEach(item => {
+        searchParams.append('comments', item);
+    });
+    if(data.howShow) {
+        searchParams.set('howShow', data.howShow);
+    };
+    if(data.sortBy) {
+        searchParams.set('sortBy', data.sortBy);
+    };
+    if(data.page) {
+        searchParams.append('page', data.page);
+    } else {
+        searchParams.set('page', 0);
+    };
+    history.replaceState(null, document.title, '?' + searchParams.toString());
+};
+
+function getData(params) {
+    const result = document.querySelector('.result_js');
+    result.innerHTML = JSON.stringify(params, null, 2);
+};
+
+(function() {
+    const form = document.forms.filter;
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        let data = {
+            page: 0,
+        };
+        data.tags = [...form.elements.tags].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+        data.views = ([...form.elements.views].find(radio => radio.checked) || {value: null}).value;
+        data.comments = [...form.elements.comments].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+        data.howShow = ([...form.elements.howShow].find(radio => radio.checked) || {value: null}).value;
+        data.sortBy = ([...form.elements.sortBy].find(radio => radio.checked) || {value: null}).value;
+        getData(data);
+        setSearchParams(data);
+    });
+    const params = getParamsFromLocation();
+    setDataToFilter(params);
+    getData(params);
+    //params.page is undefined
+    const links = document.querySelectorAll('.pagination-link_js');
+
+    console.log(params.page);
+
+    links[params.page].classList.add('pagination-link_active');
+    links.forEach((link, index) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            let searchParams = new URLSearchParams(location.search);
+            // console.log(searchParams.toString());
+            let params = getParamsFromLocation();
+            links[params.page].classList.remove('pagination-link_active');
+            searchParams.set('page', index);
+            links[index].classList.add('pagination-link_active');
+            history.replaceState(null, document.title, '?' + searchParams.toString());
+            getData(getParamsFromLocation());
+        });
+    });
+    
+})();
+
+
+
