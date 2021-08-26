@@ -1,11 +1,40 @@
-<div class="blogs-control-panel @@parent-class">
-    <form name = "filter" class="blogs-control-panel__row blogs-control-panel__row-1 filter-form_js">
+<form name = "filter" class="blogs-control-panel @@parent-class filter-form_js">
+    <div class="blogs-control-panel__row blogs-control-panel__row-1">
         <div class="blogs-control-panel__column blogs-control-panel__column-tags">
             <h5 class="blogs-control-panel__column-title">Tags</h5>
-            <div class="blogs-control-panel__column-wrapper blogs-control-panel__column-tags-wrapper">
-                <input type="checkbox" name="tags" id="tag-1" value="1" checked>
-                <label for="tag-1" class="checkbox-label-tag checkbox-label-tag-1"></label>
-                <input type="checkbox" name="tags" id="tag-2" value="2">
+            <div class="blogs-control-panel__column-wrapper blogs-control-panel__column-tags-wrapper blogs-control-panel__column-tags-wrapper_js">
+                
+                    <input type="checkbox" name="tags" id="tag-1" value="1">
+                    <label for="tag-1" class="checkbox-label-tag">
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1.25" y="1.25" width="22.5" height="22.5" rx="3.75" stroke="#57E2E5" stroke-width="2.5"/>
+                            <path d="M7 11.75L10.913 17.77C11.2013 18.2135 11.8584 18.1893 12.1133 17.7259L18.425 6.25" stroke="#57E2E5" stroke-opacity="0" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </label>
+
+                    <input type="checkbox" name="tags" id="tag-2" value="2">
+                    <label for="tag-2" class="checkbox-label-tag">
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1.25" y="1.25" width="22.5" height="22.5" rx="3.75" stroke="#57E2E5" stroke-width="2.5"/>
+                            <path d="M7 11.75L10.913 17.77C11.2013 18.2135 11.8584 18.1893 12.1133 17.7259L18.425 6.25" stroke="#57E2E5" stroke-opacity="0" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </label>
+
+                    <input type="checkbox" name="tags" id="tag-3" value="3">
+                    <label for="tag-3" class="checkbox-label-tag">
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1.25" y="1.25" width="22.5" height="22.5" rx="3.75" stroke="#57E2E5" stroke-width="2.5"/>
+                            <path d="M7 11.75L10.913 17.77C11.2013 18.2135 11.8584 18.1893 12.1133 17.7259L18.425 6.25" stroke="#57E2E5" stroke-opacity="0" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </label>
+
+
+
+
+
+                <!-- <input type="checkbox" name="tags" id="tag-1" value="1"> -->
+                <!-- <label for="tag-1" class="checkbox-label-tag checkbox-label-tag-1"></label> -->
+                <!-- <input type="checkbox" name="tags" id="tag-2" value="2">
                 <label for="tag-2" class="checkbox-label-tag checkbox-label-tag-2"></label>
                 <input type="checkbox" name="tags" id="tag-3" value="3">
                 <label for="tag-3" class="checkbox-label-tag checkbox-label-tag-3"></label>
@@ -18,7 +47,7 @@
                 <input type="checkbox" name="tags" id="tag-7" value="7">
                 <label for="tag-7" class="checkbox-label-tag checkbox-label-tag-7"></label>
                 <input type="checkbox" name="tags" id="tag-8" value="8">
-                <label for="tag-8" class="checkbox-label-tag checkbox-label-tag-8"></label>
+                <label for="tag-8" class="checkbox-label-tag checkbox-label-tag-8"></label> -->
             </div>
         </div>
         <div class="blogs-control-panel__column blogs-control-panel__column-views">
@@ -57,12 +86,13 @@
         </div>
         <div class="blogs-control-panel__column blogs-control-panel__column-resetform">
             <h5 class="blogs-control-panel__column-title blogs-control-panel__column-title-resetform">reset form</h5>
-            <button type="submit" class="button button-colorsheme-white blogs-control-panel__column-apply-btn blogs-control-panel__column-apply-btn">Apply</button>
+            <button type="button" class="button button-colorsheme-white blogs-control-panel__column-apply-btn blogs-control-panel__column-apply-btn">Reset</button>
         </div>
-    </form>
-    <form name = "search" class="container blogs-control-panel__row blogs-control-panel__row-2">
+    </div>
+    <div class="container blogs-control-panel__row blogs-control-panel__row-2">
         <label class="text-input-label" for="search-text-input">Name</label>
-        <input class="text-input-field-common" type="text" id="search-text-input">
+        <input type="text" name="name" class="text-input-field-common" id="search-text-input">
         <button type="submit" class="button button-colorsheme-white blogs-control-panel__column-search-btn">Search</button>
-    </form>
-</div>
+    </div>
+</form>
+

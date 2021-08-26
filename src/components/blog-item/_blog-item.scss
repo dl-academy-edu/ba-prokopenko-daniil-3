@@ -46,11 +46,11 @@
     &__title {
         margin-bottom: 10px;
     }
-    &__description {
+    &__text {
         font-weight: 500;
         margin-bottom: 20px;
     }
-    &__link a {
+    &__link {
         border-bottom: 1px dashed #070707;
         font-weight: 700;
         font-size: 18px;
@@ -72,7 +72,7 @@
                 margin-right: 20px;
             }
 		}
-        &__text {
+        &__text-block {
             padding: 20px 20px 20px 0;
         }
 	}
@@ -91,7 +91,7 @@
                 margin-right: 20px;
             }
 		}
-        &__text {
+        &__text-block {
             padding: 20px 20px 20px 0;
         }
 	}
