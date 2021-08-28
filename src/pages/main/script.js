@@ -537,7 +537,7 @@ const customSlider = new Slider('.slider_js', {
 });
 
 // Swiper
-const swiper = new Swiper('.swiper-container', {
+const swiper = new Swiper('.swiper', {
     direction: 'horizontal',
 
     // Navigation arrows

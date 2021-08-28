@@ -357,15 +357,22 @@ function isValidAge(Age) {
     return (!isNaN(Age) && Age !== null && Age > 0);
 };
 
-//работа с фильтром и запросы на сервер
 
-const SERVER_URL = 'https://academy.directlinedev.com';
-const LIMIT = 9; // макс количество постов на странице
-const monthsByNumber = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
 
-//old
+//фильтр и загрузка постов
 (function() {
+
+    //исходные данные для работы фильтра и загрузки постов.
+    const SERVER_URL = 'https://academy.directlinedev.com';
+    const postsByPageCountByDefaultLimit = 5; // макс количество постов на странице по дефолту.
+    const monthsByNumber = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+    const resetedFilterValues = {"name": "", "tags": [""], "views": "", "comments": [""], "howShow": "", "sortBy": ""};
+    
     const form = document.forms.filter;
+    const ResetBtn = document.querySelector('.blogs-control-panel__reset-btn_js');
+    const buttonBack = document.querySelector('.myblog-button_back_js');
+    const buttonNext = document.querySelector('.myblog-button_next_js');
+
     form.addEventListener('submit', e => {
         e.preventDefault();
         let data = {
@@ -380,247 +387,230 @@ const monthsByNumber = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "1
         getData(data);
         setSearchParams(data);
     });
-    const params = getParamsFromLocation();
-    setDataToFilter(params);
-    getData(params);
-    const links = document.querySelectorAll('.pagination-link_js');
-    links[params.page].classList.add('pagination-link_active');
-    links.forEach((link, index) => {
+    // получение списка тегов с сервера
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', SERVER_URL + '/api/tags');
+    xhr.send();
+    xhr.onload = () => {
+        const tags = JSON.parse(xhr.response).data;
+        const tagsBox = document.querySelector('.blogs-control-panel__column-tags-wrapper_js');  // обёртка куда отрисовывать теги в форме
+        tags.forEach(tag => {
+            const tagHTML = createTag({
+                id: tag.id,
+                name: tag.name,
+                color: tag.color,
+            });
+            tagsBox.insertAdjacentHTML('beforeend', tagHTML);
+        });
+        const params = getParamsFromLocation();
+        setDataToFilter(params);
+        getData(params);
+    };
+    ResetBtn.addEventListener('click', () => {
+        setDataToFilter(resetedFilterValues);
+    });
+    buttonBack.addEventListener('click', () => {
+        turnPageTo(getParamsFromLocation().page - 1);
+    });
+    buttonNext.addEventListener('click', () => {
+        turnPageTo(getParamsFromLocation().page + 1);
+    });
+
+    //
+    function getParamsFromLocation() {
+        let searchParams = new URLSearchParams(location.search);
+        return {
+            name: searchParams.get('name') || '',
+            tags: searchParams.getAll('tags'),
+            views: searchParams.get('views'),
+            comments: searchParams.getAll('comments'),
+            howShow: searchParams.get('howShow'),
+            sortBy: searchParams.get('sortBy'),
+            page: +searchParams.get('page') || 0,
+        };
+    };
+
+    //
+    function setDataToFilter(data) {
+        const form = document.forms.filter;
+        form.elements.name.value = data.name;
+        form.elements.tags.forEach(checkbox => {
+            checkbox.checked = data.tags.includes(checkbox.value);
+        });
+        form.elements.views.forEach(radio => {
+            radio.checked = data.views === radio.value
+        });
+        form.elements.comments.forEach(checkbox => {
+            checkbox.checked = data.comments.includes(checkbox.value);
+        });
+        form.elements.howShow.forEach(radio => {
+            radio.checked = data.howShow === radio.value
+        });
+        form.elements.sortBy.forEach(radio => {
+            radio.checked = data.sortBy === radio.value
+        });
+    };
+
+    //
+    function setSearchParams(data) {
+        let searchParams = new URLSearchParams();
+        searchParams.set('name', data.name);
+        data.tags.forEach(item => {
+            searchParams.append('tags', item);
+        });
+        if(data.views) {
+            searchParams.set('views', data.views);
+        };
+        data.comments.forEach(item => {
+            searchParams.append('comments', item);
+        });
+        if(data.howShow) {
+            searchParams.set('howShow', data.howShow);
+        };
+        if(data.sortBy) {
+            searchParams.set('sortBy', data.sortBy);
+        };
+        if(data.page) {
+            searchParams.append('page', data.page);
+        } else {
+            searchParams.set('page', 0);
+        };
+        history.replaceState(null, document.title, '?' + searchParams.toString());
+    };
+
+    //preparing parameters, getting posts from server.
+    function getData(params) {
+        let xhr = new XMLHttpRequest();
+        let searchParams = new URLSearchParams();
+        searchParams.set('v', '1.0.0');
+        if(params.tags && Array.isArray(params.tags) && params.tags.length) {
+            searchParams.set('tags', JSON.stringify(params.tags));
+        };
+        let filter = {};
+        if(params.name) {
+            filter.title = params.name;
+        };
+        let postsByPageCountSelectedLimit = postsByPageCountByDefaultLimit;
+        if(+params.howShow) {
+            postsByPageCountSelectedLimit = +params.howShow;
+        };
+        searchParams.set('limit', postsByPageCountSelectedLimit);
+        if (params.views) {
+            const viewsSelected = (params.views).split('-');
+            filter.views = {"$between": viewsSelected};
+        };
+        if(params.comments.length) {
+            const commentsCountSelected = [params.comments[0].split('-')[0], params.comments[params.comments.length-1].split('-')[1]];
+            filter.commentsCount = {"$between": commentsCountSelected};
+        };
+        searchParams.set('filter', JSON.stringify(filter));
+
+        if(+params.page) {
+            searchParams.set('offset', (+params.page) * postsByPageCountSelectedLimit)
+        };
+        if(params.sortBy) {
+            searchParams.set('sort', JSON.stringify([params.sortBy, 'ASC']));
+        };
+        xhr.open('GET', SERVER_URL + '/api/posts?' + searchParams.toString());
+        xhr.send();
+        xhr.onload = () => {
+            const response = JSON.parse(xhr.response);
+            let dataPosts = '';
+            response.data.forEach(post => {
+                dataPosts += cardCreate({
+                    title: post.title,
+                    text: post.text,
+                    photo: post.photo,
+                    tags: post.tags,
+                    commentsCount: post.commentsCount,
+                    date: new Date(post.date),
+                    views: post.views,
+                });
+            });
+            const result = document.querySelector('.result_js');
+            result.innerHTML = dataPosts;
+            const links = document.querySelector('.pagination_js');
+            links.innerHTML = '';
+            const pageCount = Math.ceil(response.count / postsByPageCountSelectedLimit);
+            for (let i = 0; i < pageCount; i++) {
+                const link = linkElementCreate(i);
+                links.insertAdjacentElement('beforeend', link);
+            };
+            if(getParamsFromLocation().page > 0) {
+                buttonBack.removeAttribute('disabled');
+            };
+            if(getParamsFromLocation().page < (pageCount - 1)) {
+                buttonNext.removeAttribute('disabled');
+            };
+
+            if(getParamsFromLocation().page === 0) {
+                buttonBack.setAttribute('disabled', '');
+            };
+            if(getParamsFromLocation().page === (pageCount - 1)) {
+                buttonNext.setAttribute('disabled', '');
+            };
+        };
+    };
+
+    //creator of pagination link
+    function linkElementCreate(page) {        
+        const link = document.createElement('a');
+        link.href = '?page=' + page;
+        link.innerText = '' + (page + 1);
+        link.classList.add('pagination-panel__pagination-link');
+        link.classList.add('pagination-link_js');
+        let params = getParamsFromLocation();
+        if(page === +params.page) {
+            link.classList.add('pagination-link_active');
+        }
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            let searchParams = new URLSearchParams(location.search);
-            // console.log(searchParams.toString());
-            let params = getParamsFromLocation();
-            links[params.page].classList.remove('pagination-link_active');
-            searchParams.set('page', index);
-            links[index].classList.add('pagination-link_active');
-            history.replaceState(null, document.title, '?' + searchParams.toString());
-            getData(getParamsFromLocation());
+            turnPageTo(page);
         });
-    });
-})();
-
-//new need comparison - updated -- need rectify one by one from old state above
-// (function() {
-//     const form = document.forms.filter;
-//     form.addEventListener('submit', e => {
-//         e.preventDefault();
-//         let data = {
-//             page: 0,
-//         };
-//         data.name = form.elements.name.value;
-//         data.tags = [...form.elements.tags].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-//         data.views = ([...form.elements.views].find(radio => radio.checked) || {value: null}).value;
-//         data.comments = [...form.elements.comments].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-//         data.howShow = ([...form.elements.howShow].find(radio => radio.checked) || {value: null}).value;
-//         data.sortBy = ([...form.elements.sortBy].find(radio => radio.checked) || {value: null}).value;
-//         getData(data);
-//         setSearchParams(data);
-//     });
-//     let xhr = new XMLHttpRequest();
-//     xhr.open('GET', SERVER_URL + '/api/tags');
-//     xhr.send();
-//     xhr.onload = () => {
-//         const tags = JSON.parse(xhr.response).data;
-//         console.log(tags);
-//         const tagsBox = document.querySelector('.blogs-control-panel__column-tags-wrapper_js');  // обёртка куда отрисовывать теги в форме
-//         tags.forEach(tag => {
-//             const tagHTML = createTag({
-//                 id: tag.id,
-//                 name: tag.name,
-//                 color: tag.color,
-//             });
-//             tagsBox.insertAdjacentHTML('beforeend', tagHTML);
-//         });
-//         const params = getParamsFromLocation();
-//         setDataToFilter(params);
-//         getData(params);
-//     };
-// });
-
-
-//old - correct updated
-function getParamsFromLocation() {
-    let searchParams = new URLSearchParams(location.search);
-    // console.log(searchParams.get('name'));
-    return {
-        name: searchParams.get('name') || '',
-        tags: searchParams.getAll('tags'),
-        views: searchParams.get('views'),
-        comments: searchParams.getAll('comments'),
-        howShow: searchParams.get('howShow'),
-        sortBy: searchParams.get('sortBy'),
-        page: +searchParams.get('page') || 0,
+        return link;
     };
-}
 
-
-//old - correct updated
-function setDataToFilter(data) {
-    const form = document.forms.filter;
-    form.elements.name.value = data.name;
-    form.elements.tags.forEach(checkbox => {
-        checkbox.checked = data.tags.includes(checkbox.value);
-    });
-    form.elements.views.forEach(radio => {
-        radio.checked = data.views === radio.value
-    });
-    form.elements.comments.forEach(checkbox => {
-        checkbox.checked = data.comments.includes(checkbox.value);
-    });
-    form.elements.howShow.forEach(radio => {
-        radio.checked = data.howShow === radio.value
-    });
-    form.elements.sortBy.forEach(radio => {
-        radio.checked = data.sortBy === radio.value
-    });
-};
-
-
-//old - correct updated
-function setSearchParams(data) {
-    let searchParams = new URLSearchParams();
-    searchParams.set('name', data.name);
-    data.tags.forEach(item => {
-        searchParams.append('tags', item);
-    });
-    if(data.views) {
-        searchParams.set('views', data.views);
-    };
-    data.comments.forEach(item => {
-        searchParams.append('comments', item);
-    });
-    if(data.howShow) {
-        searchParams.set('howShow', data.howShow);
-    };
-    if(data.sortBy) {
-        searchParams.set('sortBy', data.sortBy);
-    };
-    if(data.page) {
-        searchParams.append('page', data.page);
-    } else {
-        searchParams.set('page', 0);
-    };
-    history.replaceState(null, document.title, '?' + searchParams.toString());
-};
-
-//old - outdated
-function getData(params) {
-    const result = document.querySelector('.result_js');
-    result.innerHTML = JSON.stringify(params, null, 2);
-};
-
-// //new need update -- need rectify one by one from old state above
-// function getData(params) {
-//     let xhr = new XMLHttpRequest();
-//     let searchParams = new URLSearchParams();
-//     searchParams.set('v', '1.0.0');
-//     if(params.tags && Array.isArray(params.tags) && params.tags.length) {
-//         searchParams.set('tags', JSON.stringify(params.tags));
-//     }
-//     let filter = {};
-//     if(params.name) {
-//         filter.title = params.name;
-//     };
-//     searchParams.set('filter', JSON.stringify(filter));
-//     searchParams.set('limit', LIMIT);
-//     if(+params.page) {
-//         searchParams.set('offset', (+params.page) * LIMIT)
-//     }
-//     if(params.sortBy) {
-//         searchParams.set('sort', JSON.stringify([params.sortBy, 'ASC']));
-//     }
-//     console.log(searchParams.toString());
-//     // xhr.open('GET', SERVER_URL + '/api/posts?' + searchParams.toString());
-//     xhr.open('GET', SERVER_URL + '/api/posts');
-
-//     xhr.send();
-//     xhr.onload = () => {
-//         const response = JSON.parse(xhr.response);
-//         console.log(response);
-//         let dataPosts = '';
-//         response.data.forEach(post => {
-//             dataPosts += cardCreate({
-//                 title: post.title,
-//                 text: post.text,
-//                 photo: post.photo,
-//                 tags: post.tags,
-//                 commentsCount: post.commentsCount,
-//                 date: post.date,
-//                 views: post.views,
-//             });
-//         })
-//         const result = document.querySelector('.result_js');
-//         result.innerHTML = dataPosts;
-//         const links = document.querySelector('.pagination_js');
-//         links.innerHTML = '';
-//         const pageCount = Math.ceil(response.count / LIMIT);
-//         for (let i = 0; i < pageCount; i++) {
-//             const link = linkElementCreate(i);
-//             links.insertAdjacentElement('beforeend', link);
-//             links.insertAdjacentHTML('beforeend', '<br>');
-//         };
-//     }
-// }
-
-
-// новые функции
-
-//ok - updated
-function linkElementCreate(page) {
-    const link = document.createElement('a');
-    link.href = '?page=' + page;
-    link.innerText = '' + (page + 1);
-    link.classList.add('pagination-panel__pagination-link pagination-link_js');
-    let params = getParamsFromLocation();
-    if(page === +params.page) {
-        link.classList.add('active');
-    }
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
+    function turnPageTo(page) {
         const links = document.querySelectorAll('.pagination-link_js');
         let searchParams = new URLSearchParams(location.search);
-        // console.log(searchParams.toString());
         let params = getParamsFromLocation();
         links[params.page].classList.remove('pagination-link_active');
         searchParams.set('page', page);
         links[page].classList.add('pagination-link_active');
         history.replaceState(null, document.title, '?' + searchParams.toString());
         getData(getParamsFromLocation());
-    });
-    return link;
-};
+    };
 
-//ok - updated
-function cardCreate({title, text, photo, tags, commentsCount, date, views}) {
-    return `
-    <section class="myblog__main-item blog-item">   
-        <picture class="blog-item__img-wrapper">
-            <source class="blog-item__img" media="screen and (min-width: 1200px)" srcset="${SERVER_URL}${photo.desktopPhotoUrl}, ${SERVER_URL}${photo.desktop2xPhotoUrl} 2x">
-            <source class="blog-item__img" media="screen and (min-width: 768px) and (max-width: 1199px)" srcset="${SERVER_URL}${photo.tabletPhotoUrl}, ${SERVER_URL}${photo.tablet2xPhotoUrl} 2x">
-            <source class="blog-item__img" media="screen and (max-width: 767px)" srcset="${SERVER_URL}${photo.mobilePhotoUrl}, ${SERVER_URL}${photo.mobile2xPhotoUrl} 2x">
-            <img class="blog-item__img" src="${SERVER_URL}${photo.desktopPhotoUrl}" alt="${title}">
-        </picture>
-        <div class="blog-item__text-block">
-            <div class="blog-item__tags">
-                ${tags.map(tag => `<div class="blog-item__tags-item" style="background-color: ${tag.color}"></div>`).join('')}
+    //creator of post entry item card
+    function cardCreate({title, text, photo, tags, commentsCount, date, views}) {
+        return `
+        <section class="myblog__main-item blog-item">   
+            <picture class="blog-item__img-wrapper">
+                <source class="blog-item__img" media="screen and (min-width: 1200px)" srcset="${SERVER_URL}${photo.desktopPhotoUrl}, ${SERVER_URL}${photo.desktop2xPhotoUrl} 2x">
+                <source class="blog-item__img" media="screen and (min-width: 768px) and (max-width: 1199px)" srcset="${SERVER_URL}${photo.tabletPhotoUrl}, ${SERVER_URL}${photo.tablet2xPhotoUrl} 2x">
+                <source class="blog-item__img" media="screen and (max-width: 767px)" srcset="${SERVER_URL}${photo.mobilePhotoUrl}, ${SERVER_URL}${photo.mobile2xPhotoUrl} 2x">
+                <img class="blog-item__img" src="${SERVER_URL}${photo.desktopPhotoUrl}" alt="${title}">
+            </picture>
+            <div class="blog-item__text-block">
+                <div class="blog-item__tags">
+                    ${tags.map(tag => `<div class="blog-item__tags-item" style="background-color: ${tag.color}"></div>`).join('')}
+                </div>
+                <div class="blog-item__dates">
+                    <div class="blog-item__dates-item blog-item__post-date">${date.getDate()}.${monthsByNumber[date.getMonth()]}.${date.getFullYear()}</div>
+
+                    <div class="blog-item__dates-item blog-item__post-views">${views} views</div>
+                    <div class="blog-item__dates-item blog-item__post-comments">${commentsCount} comments</div>
+                </div>
+                <h3 class="blog-item__title">${title}</h3>
+                <p class="blog-item__text">${text}</p>
+                <a class="blog-item__link" href="#">Go to this post</a>
             </div>
-            <div class="blog-item__dates">
-                <div class="blog-item__dates-item blog-item__post-date">${date.getDate()}.${monthsByNumber[date.getMonth()]}.${date.getFullYear()}</div>
+        </section>`
+    };
 
-                <div class="blog-item__dates-item blog-item__post-views">${views} views</div>
-                <div class="blog-item__dates-item blog-item__post-comments">${commentsCount} comments</div>
-            </div>
-            <h3 class="blog-item__title">${title}</h3>
-            <p class="blog-item__text">${text}</p>
-            <a class="blog-item__link" href="#">Go to this post</a>
-        </div>
-    </section>`
-}
-
-//ok - updated - arg. name unneded (kept for compatibility)
-function createTag({id, name, color}) {
-    return `
+    //tag creator in filter form (control panel)
+    function createTag({id, name, color}) {
+        return `
         <input type="checkbox" name="tags" id="tags-${id}" value="${id}">
         <label for="tags-${id}" class="checkbox-label-tag">
             <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -628,7 +618,11 @@ function createTag({id, name, color}) {
                 <path d="M7 11.75L10.913 17.77C11.2013 18.2135 11.8584 18.1893 12.1133 17.7259L18.425 6.25" stroke="${color}" stroke-opacity="0" stroke-width="2.5" stroke-linecap="round"/>
             </svg>
         </label>`
-}
+    };
+
+})();
+
+
 
 
 
