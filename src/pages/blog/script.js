@@ -361,7 +361,6 @@ function isValidAge(Age) {
 
 //фильтр и загрузка постов
 (function() {
-
     //исходные данные для работы фильтра и загрузки постов.
     const SERVER_URL = 'https://academy.directlinedev.com';
     const postsByPageCountByDefaultLimit = 5; // макс количество постов на странице по дефолту.
@@ -372,6 +371,8 @@ function isValidAge(Age) {
     const ResetBtn = document.querySelector('.blogs-control-panel__reset-btn_js');
     const buttonBack = document.querySelector('.myblog-button_back_js');
     const buttonNext = document.querySelector('.myblog-button_next_js');
+    const mainLoader = document.querySelector('.preloader__loader_js');
+    let loaderCount = 0;
 
     form.addEventListener('submit', e => {
         e.preventDefault();
@@ -391,6 +392,7 @@ function isValidAge(Age) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', SERVER_URL + '/api/tags');
     xhr.send();
+    showLoader();
     xhr.onload = () => {
         const tags = JSON.parse(xhr.response).data;
         const tagsBox = document.querySelector('.blogs-control-panel__column-tags-wrapper_js');  // обёртка куда отрисовывать теги в форме
@@ -405,6 +407,7 @@ function isValidAge(Age) {
         const params = getParamsFromLocation();
         setDataToFilter(params);
         getData(params);
+        hideLoader();
     };
     ResetBtn.addEventListener('click', () => {
         setDataToFilter(resetedFilterValues);
@@ -513,6 +516,8 @@ function isValidAge(Age) {
         };
         xhr.open('GET', SERVER_URL + '/api/posts?' + searchParams.toString());
         xhr.send();
+
+        showLoader();
         xhr.onload = () => {
             const response = JSON.parse(xhr.response);
             let dataPosts = '';
@@ -532,6 +537,7 @@ function isValidAge(Age) {
             const links = document.querySelector('.pagination_js');
             links.innerHTML = '';
             const pageCount = Math.ceil(response.count / postsByPageCountSelectedLimit);
+            // console.log(pageCount);
             for (let i = 0; i < pageCount; i++) {
                 const link = linkElementCreate(i);
                 links.insertAdjacentElement('beforeend', link);
@@ -546,9 +552,10 @@ function isValidAge(Age) {
             if(getParamsFromLocation().page === 0) {
                 buttonBack.setAttribute('disabled', '');
             };
-            if(getParamsFromLocation().page === (pageCount - 1)) {
+            if(getParamsFromLocation().page === (pageCount - 1) || pageCount === 0) {
                 buttonNext.setAttribute('disabled', '');
             };
+            hideLoader();
         };
     };
 
@@ -619,6 +626,21 @@ function isValidAge(Age) {
             </svg>
         </label>`
     };
+
+    function showLoader() {
+        loaderCount++;
+        mainLoader.classList.remove('preloader_hidden');
+        // console.log(`loader count increased:` + loaderCount);
+    };
+    function hideLoader () {
+        loaderCount--;
+        // console.log(`loader count decreased:` + loaderCount);
+        if(loaderCount <= 0) {
+            mainLoader.classList.add('preloader_hidden');
+            loaderCount = 0;
+        };
+    };
+
 
 })();
 
