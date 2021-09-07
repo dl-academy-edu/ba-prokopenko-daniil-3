@@ -10,9 +10,6 @@
     }
     &__menu {
         display: flex;
-        &-home {
-            font-weight: 700;
-        }
         &-item {
             a {
                 color: #828282;
@@ -21,13 +18,14 @@
             &_hidden {
                 display: none;
             }
+            &_current a {
+                font-weight: 700;
+                color:#070707;
+                &:hover {color:#828282;} 
+            }
         }
         &-item:not(:last-child) {
             padding-right: 20px;
-        }
-        &-home a {
-            color:#070707;
-            &:hover {color:#828282;} 
         }
     }
     &__popup-menu {
@@ -46,24 +44,26 @@
 @media screen and (max-width: 767px) {
     .header {
         display: none;
-        position: absolute;
+        // position: absolute;
         padding: 50px 20px;
         border: none;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-end;
         min-height: 812px;
+        // width: 100%;
         z-index: 1;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%,-50%);
 
         &__nav {
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: flex-end;
             min-height: 400px;
             padding: 70px 0 50px 0;
+            margin-top: 50px;
         }
         &__menu {
             flex-direction: column;

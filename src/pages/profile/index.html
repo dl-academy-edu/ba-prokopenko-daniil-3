@@ -12,19 +12,20 @@
                 @@include('mobile-menu-burger/index.html', {"addition-class": "myprofile__menu-burger"})
             </div>
             <div class="myprofile__wrapper">
-                <div class="myprofile__img-wrapper">
-                    <img class="myprofile__img" src="/static/images/profile-image.jpg" alt="">
+                <div class="myprofile__img-wrapper myprofile__img-wrapper_js">
+                    <!-- <img class="myprofile__img" src="/static/images/profile-image.jpg" alt=""> -->
                 </div>
                 <div class="myprofile__data">
-                    <p class="myprofile__attr">Name: <span class="myprofile__value">Ksenia</span></p>
-                    <p class="myprofile__attr">Surname: <span class="myprofile__value">Larioshkina</span></p>
-                    <p class="myprofile__attr">Email: <span class="myprofile__value">larioshkina@gmail.com</span></p>
-                    <p class="myprofile__attr">Password: <span class="myprofile__value">****************</span></p>
-                    <p class="myprofile__attr">Location: <span class="myprofile__value">Moscow</span></p>
-                    <p class="myprofile__attr">Age: <span class="myprofile__value">17</span></p>
-                    <button class="button button-colorsheme-white change-password-btn">Change password</button>
-                    <button class="button button-colorsheme-white change-data-btn">Change other data</button>
-                    <button class="button button-colorsheme-white delete-account-btn">Delete account</button>
+                    <p class="myprofile__attr">Name: <span class="myprofile__value myprofile__name_js"></span></p>
+                    <p class="myprofile__attr">Surname: <span class="myprofile__value myprofile__surname_js"></span></p>
+                    <p class="myprofile__attr">Email: <span class="myprofile__value myprofile__email_js"></span></p>
+                    <p class="myprofile__attr">Password: <span class="myprofile__value myprofile__password_js">****************</span></p>
+                    <p class="myprofile__attr">Location: <span class="myprofile__value myprofile__location_js"></span></p>
+                    <p class="myprofile__attr">Age: <span class="myprofile__value myprofile__age_js"></span></p>
+                    <button type="button" class="button button-colorsheme-white change-password-btn edit-password-btn_js">Change password</button>
+                    <button type="button" class="button button-colorsheme-white change-data-btn edit-data-btn_js">Change other data</button>
+                    <button type="button" class="button button-colorsheme-white delete-account-btn delete-account-btn_js">Delete account</button>
+                    <button type="button" class="button button-colorsheme-white sign-out-btn sign-out-btn_js">Sign out</button>
                 </div>
             </div>
         </section>
@@ -37,6 +38,7 @@
     @@include('register-modal/index.html')
     @@include('send-message-modal/index.html')
     @@include('button-to-top/index.html')
+    @@include('preloader/index.html')
     <script src="script.js"></script>
 </body>
 </html>
