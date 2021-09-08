@@ -61,7 +61,6 @@ popupWindowHandler('mobile__menu-burger_js', 'popup-menu_js',
         })
     });
     window.addEventListener('scroll', (e) => {
-        // console.log(window.pageYOffset);
         if(window.pageYOffset > 1500) {
             button.classList.remove('button-to-top_hidden');
         }
@@ -126,8 +125,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
 
     //валидация формы sign-in
     (function() {
-        // const popupWindow = document.querySelector('.sign-in-form_js');
-        // const popupOverlay = document.querySelector('.sign-in-overlay_js');
         const form = document.forms.signIn;
         const emailInput = form.elements.email;
         const passwordInput = form.elements.password;
@@ -148,8 +145,7 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
             formNeedsValidation = true;
             areTextInputsValid = validateTextInputs(formNeedsValidation, textInputFields);
             if (areTextInputsValid) {
-                // closeWindow(popupWindow, 'popup-form_open', popupOverlay, 'popup-overlay_open');
-                 initSignIn();
+                initSignIn();
             }
         });
         
@@ -164,8 +160,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
 
     //валидация формы Register
     (function() {
-        // const popupWindow = document.querySelector('.register-form_js');
-        // const popupOverlay = document.querySelector('.register-overlay_js');
         const form = document.forms.register;
         const emailInput = form.elements.email;
         const nameInput = form.elements.name;
@@ -174,9 +168,7 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         const passwordRepeatInput = form.elements.passwordRepeat;
         const locationInput = form.elements.location;
         const ageInput = form.elements.age;
-
         const confirmInput = form.elements.confirm;
-
         const submitBtn = form.elements.submitButton;
 
         emailInput.isValid = () => isValidEmail(emailInput.value);
@@ -210,10 +202,7 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
             areTextInputsValid = validateTextInputs(formNeedsValidation, textInputFields);
             isCheckboxInputValid = validateCheckboxInputs(formNeedsValidation, confirmInput);
             if (areTextInputsValid && isCheckboxInputValid) {
-                // closeWindow(popupWindow, 'popup-form_open', popupOverlay, 'popup-overlay_open');
-                // starting initialization register process with server
                 initRegister();
-
             }
         });
         
@@ -237,16 +226,12 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
 
     //валидация формы Send Message
     (function() {
-        // const popupWindow = document.querySelector('.send-message-form_js');
-        // const popupOverlay = document.querySelector('.send-message-overlay_js');
         const form = document.forms.sendMessage;
         const emailInput = form.elements.to;
         const nameInput = form.elements.name;
         const subjectInput = form.elements.subject;
         const phoneInput = form.elements.phone;
-
         const confirmInput = form.elements.confirm;
-
         const submitBtn = form.elements.submitButton;
 
         emailInput.isValid = () => isValidEmail(emailInput.value);
@@ -274,7 +259,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
             areTextInputsValid = validateTextInputs(formNeedsValidation, textInputFields);
             isCheckboxInputValid = validateCheckboxInputs(formNeedsValidation, confirmInput);
             if (areTextInputsValid && isCheckboxInputValid) {
-                // closeWindow(popupWindow, 'popup-form_open', popupOverlay, 'popup-overlay_open');
                 initSendMessage();
             }
         });
@@ -351,7 +335,7 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         if (elm.nextElementSibling.nextElementSibling.nextElementSibling) {
             elm.nextElementSibling.nextElementSibling.nextElementSibling.remove();
         };
-    }
+    };
 
     // маркировщик чекбокса, прошедшего проверку
     function markCheckboxInputAsValid(elm) {
@@ -408,7 +392,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         const sendMessageForm = document.forms.sendMessage;
         const sendMessageOverlay = document.querySelector('.send-message-overlay_js');
         const submitBtn = sendMessageForm.elements.submitButton;
-        // console.log("запрос ушёл на сервер");
         const myName = sendMessageForm.name.value;
         const mySubject = sendMessageForm.subject.value;
         const myPhone = sendMessageForm.phone.value;
@@ -417,8 +400,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         let data = {};
         data.to = sendMessageForm.to.value;
         data.body = JSON.stringify({myName, mySubject, myPhone, myMessage});
-        // console.log(data);
-        // console.log(JSON.stringify(data));
     
         const textInputFields = [
             sendMessageForm.to,
@@ -428,9 +409,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
             sendMessageForm.message
         ];
     
-        // console.log('textInputFields:', textInputFields);
-        // console.log('sendMessageForm.confirm:', sendMessageForm.confirm);
-        // console.log('submitBtn', submitBtn);
         loaderSendMessage.classList.remove('preloader_hidden');
         sendRequest({
             method: 'POST',
@@ -443,21 +421,16 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         .then(res => res.json())
         .then(res => {
             if(res.success) {
-                // console.log('Процесс завершился удачно');
                 emptyFormInputs(textInputFields, sendMessageForm.confirm, submitBtn);
                 closeWindow(modalSendMessage, 'popup-form_open', sendMessageOverlay, 'popup-overlay_open');
                 loaderSendMessage.classList.add('preloader_hidden');
                 alert('Ваше сообщение успешно отправлено!');
             } else {
-                // console.log('Выкинули исключение');
                 throw res;
             };
         })
         .catch(err => {
-            // console.log('Получили ошибку с сервера');
-                // console.log('err:', err);
             if(err.errors) {
-                // console.error('err.errors:', err.errors);
                 errorFormHandler(err.errors, sendMessageForm);
             };
         })
@@ -467,14 +440,11 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
     }
     
     function initRegister() {
-        // const buttonOpeningModalRegister = document.querySelector(".menu__register-btn_js");
         const modalRegister = document.querySelector(".register-form_js");
-        // const buttonCloseModalRegister = document.querySelector(".register-form__close-btn_js");
         const loaderRegister = document.querySelector(".preloader__loader_js");
         const registerForm = document.forms.register;
         const registerOverlay = document.querySelector(".register-overlay_js");
         const submitBtn = registerForm.elements.submitButton;
-        // console.log("запрос ушёл на сервер");
     
         let data = {};
         data.email = registerForm.email.value;
@@ -505,20 +475,16 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         })
         .then(res => res.json())
         .then(res => {
-            if(res.success) {
-                // console.log('Процесс завершился удачно');            
+            if(res.success) {          
                 emptyFormInputs(textInputFields, registerForm.confirm, submitBtn);
                 closeWindow(modalRegister, 'popup-form_open', registerOverlay, 'popup-overlay_open');
                 alert(`Пользователь с id ${res.data.id} & email ${res.data.email} создан!`);
                 loaderRegister.classList.add('preloader_hidden');
             } else {
-                // console.log('Выкинули исключение');
                 throw res;
             };
         })
         .catch(err => {
-            // console.log('Получили ошибку с сервера');
-            // console.error(err.errors);
             errorFormHandler(err.errors, registerForm);
         })
         .finally(() => {
@@ -528,8 +494,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
     
     function  initSignIn() {
         const modalLogin = document.querySelector(".sign-in-form_js");
-        // const buttonOpenLogin = document.querySelector(".menu__sign-in-btn_js");
-        // const buttonCloseLogin = document.querySelector(".sign-in-form__close-btn_js");
         const loaderSignIn = document.querySelector(".preloader__loader_js");
         const loginForm = document.forms.signIn;
         const loginOverlay = document.querySelector(".sign-in-overlay_js")
@@ -555,9 +519,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         .then(res => res.json())
         .then(res => {
             if(res.success) {
-                // console.log('Процесс завершился удачно');
-                // console.log('Вы успешно вошли!');
-                // console.log(res);
                 localStorage.setItem('token', res.data.token);
                 localStorage.setItem('userId', res.data.userId);
                 emptyFormInputs(textInputFields);
@@ -568,15 +529,11 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
                     location.pathname = '/pages/profile';
                 }, 2000);
             } else {
-                // console.log('Выкинули исключение');
                 throw res;
             };
         })
         .catch(err => {
-            // console.log('Получили ошибку с сервера');
             if(err._message) {
-                // alert(err._message);
-                // console.log('err._message:', err._message);
                 const errorObj = {"email" : err._message};
                 errorFormHandler(errorObj, loginForm);
             };
@@ -598,7 +555,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
     };
     
     function showErrorMessageFromServer(input, messageError) {
-        // console.log("ошибка записана в соответсвующее поле")
         markTextInputAsInvalid(input);
         let errorElement = document.createElement('div');
         errorElement.classList.add('text-input-error');
@@ -691,7 +647,6 @@ function Slider (selector, options = {initialActiveIndex: 0}) {
     let isTouched = false;
 
     wrapper.addEventListener('touchstart', (e) => {
-        // e.preventDefault();
         isTouched = true;
         const touch = e.touches[0];
         clientX = touch.clientX;
@@ -725,7 +680,6 @@ function Slider (selector, options = {initialActiveIndex: 0}) {
     wrapper.addEventListener('mousedown', (e) => {
         checkerMouseDown = true;
         clientX = e.clientX;
-        // console.log("мышка нажата");
     });
     
     function endMouseEvent(e) {
@@ -779,16 +733,13 @@ function Slider (selector, options = {initialActiveIndex: 0}) {
     function createDot(index) {
         const dot = document.createElement('button');
         dot.classList.add('pagination-panel__dot');
-
         if(index === activeSlideIndex) {
             dot.classList.add('pagination-panel__dot_active');
 
         };
-
         dot.addEventListener('click', () => {
             setActiveSlide(index);
         });
-
         return dot;
     };
 
@@ -818,7 +769,6 @@ function Slider (selector, options = {initialActiveIndex: 0}) {
         } else {
             innerWrapper.style.transform = `translateX(-${calculatedTranslate}px)`;
         };
-        
         dots[activeSlideIndex].classList.remove('pagination-panel__dot_active');
         dots[index].classList.add('pagination-panel__dot_active');
         localStorage.setItem('activeSlide', index);
@@ -831,7 +781,6 @@ function Slider (selector, options = {initialActiveIndex: 0}) {
             slide.style.width = `${slideWidth}px`;
         });
     };
-
     return {
         nextSlide,
         prevSlide,
@@ -846,16 +795,9 @@ const customSlider = new Slider('.slider_js', {
 // Swiper
 const swiper = new Swiper('.swiper', {
     direction: 'horizontal',
-
     // Navigation arrows
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-    
 });
-
-
-
-
-

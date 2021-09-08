@@ -18,7 +18,6 @@ function rerenderLinks() {
     const registerButton = document.querySelector('.menu__register-btn_js');
     const toProfileButton = document.querySelector('.menu__my-profile-btn_js');
     const isLogin = localStorage.getItem('token');
-
     if(isLogin) {
         loginButton.classList.add('header__menu-item_hidden');
         registerButton.classList.add('header__menu-item_hidden');
@@ -27,7 +26,7 @@ function rerenderLinks() {
         loginButton.classList.remove('header__menu-item_hidden');
         registerButton.classList.remove('header__menu-item_hidden');
         toProfileButton.classList.add('header__menu-item_hidden');
-    }
+    };
 };
 
 //открытие-закрытие sign-in формы
@@ -80,12 +79,10 @@ function popupWindowHandler(openBtnClass = null, popupFormClass, closeBtnClass, 
     if (!popupForm || !closeBtn) {
         return;
     };
-
     if (openBtnClass) {
         const openBtn = document.querySelector(`.${openBtnClass}`);
         openBtn.addEventListener('click', openPopupWindow);
     };
-
     closeBtn.addEventListener('click', closePopupWindow);
     window.addEventListener('keydown', escHandler);
     function escHandler(evt) {
@@ -120,14 +117,8 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
 //валидация форм и обработка запросов на сервер (регистрация пользователя, логин и send message)
 (function() {
 
-
-
-
-
     //валидация формы sign-in
     (function() {
-        // const popupWindow = document.querySelector('.sign-in-form_js');
-        // const popupOverlay = document.querySelector('.sign-in-overlay_js');
         const form = document.forms.signIn;
         const emailInput = form.elements.email;
         const passwordInput = form.elements.password;
@@ -148,9 +139,8 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
             formNeedsValidation = true;
             areTextInputsValid = validateTextInputs(formNeedsValidation, textInputFields);
             if (areTextInputsValid) {
-                // closeWindow(popupWindow, 'popup-form_open', popupOverlay, 'popup-overlay_open');
-                 initSignIn();
-            }
+                initSignIn();
+            };
         });
         
         // запуск проверки после ввода информации в текстовые поля
@@ -165,8 +155,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
 
     //валидация формы Register
     (function() {
-        // const popupWindow = document.querySelector('.register-form_js');
-        // const popupOverlay = document.querySelector('.register-overlay_js');
         const form = document.forms.register;
         const emailInput = form.elements.email;
         const nameInput = form.elements.name;
@@ -175,9 +163,7 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         const passwordRepeatInput = form.elements.passwordRepeat;
         const locationInput = form.elements.location;
         const ageInput = form.elements.age;
-
         const confirmInput = form.elements.confirm;
-
         const submitBtn = form.elements.submitButton;
 
         emailInput.isValid = () => isValidEmail(emailInput.value);
@@ -211,9 +197,8 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
             areTextInputsValid = validateTextInputs(formNeedsValidation, textInputFields);
             isCheckboxInputValid = validateCheckboxInputs(formNeedsValidation, confirmInput);
             if (areTextInputsValid && isCheckboxInputValid) {
-                // closeWindow(popupWindow, 'popup-form_open', popupOverlay, 'popup-overlay_open');
                 initRegister();
-            }
+            };
         });
         
         // запуск проверки после ввода информации в текстовые поля
@@ -236,16 +221,12 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
 
     //валидация формы Send Message
     (function() {
-        // const popupWindow = document.querySelector('.send-message-form_js');
-        // const popupOverlay = document.querySelector('.send-message-overlay_js');
         const form = document.forms.sendMessage;
         const emailInput = form.elements.to;
         const nameInput = form.elements.name;
         const subjectInput = form.elements.subject;
         const phoneInput = form.elements.phone;
-
         const confirmInput = form.elements.confirm;
-
         const submitBtn = form.elements.submitButton;
 
         emailInput.isValid = () => isValidEmail(emailInput.value);
@@ -273,7 +254,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
             areTextInputsValid = validateTextInputs(formNeedsValidation, textInputFields);
             isCheckboxInputValid = validateCheckboxInputs(formNeedsValidation, confirmInput);
             if (areTextInputsValid && isCheckboxInputValid) {
-                // closeWindow(popupWindow, 'popup-form_open', popupOverlay, 'popup-overlay_open');
                 initSendMessage();
             }
         });
@@ -302,7 +282,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
             return false;
         };
         let checkResult = true;
-
         textInputsArray.forEach((input) => {
             markTextInputAsValid(input);    
             if (!input.isValid()) {
@@ -393,7 +372,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
     };
 
     function showErrorMessageFromServer(input, messageError) {
-        // console.log("ошибка записана в соответсвующее поле")
         markTextInputAsInvalid(input);
         let errorElement = document.createElement('div');
         errorElement.classList.add('text-input-error');
@@ -461,6 +439,7 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         };
     };
 
+    //request to server handler
     function sendRequest({url, method = 'GET', headers, body = null}) {
         // let customBody = null;
         return fetch(BASE_SERVER_PATH + url + '?v=1.0.0', {
@@ -476,7 +455,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         const sendMessageForm = document.forms.sendMessage;
         const sendMessageOverlay = document.querySelector('.send-message-overlay_js');
         const submitBtn = sendMessageForm.elements.submitButton;
-        // console.log("запрос ушёл на сервер");
         const myName = sendMessageForm.name.value;
         const mySubject = sendMessageForm.subject.value;
         const myPhone = sendMessageForm.phone.value;
@@ -485,8 +463,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         let data = {};
         data.to = sendMessageForm.to.value;
         data.body = JSON.stringify({myName, mySubject, myPhone, myMessage});
-        // console.log(data);
-        // console.log(JSON.stringify(data));
     
         const textInputFields = [
             sendMessageForm.to,
@@ -496,9 +472,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
             sendMessageForm.message
         ];
     
-        // console.log('textInputFields:', textInputFields);
-        // console.log('sendMessageForm.confirm:', sendMessageForm.confirm);
-        // console.log('submitBtn', submitBtn);
         loaderSendMessage.classList.remove('preloader_hidden');
         sendRequest({
             method: 'POST',
@@ -511,21 +484,17 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         .then(res => res.json())
         .then(res => {
             if(res.success) {
-                // console.log('Процесс завершился удачно');
                 emptyFormInputs(textInputFields, sendMessageForm.confirm, submitBtn);
                 closeWindow(modalSendMessage, 'popup-form_open', sendMessageOverlay, 'popup-overlay_open');
                 loaderSendMessage.classList.add('preloader_hidden');
                 alert('Ваше сообщение успешно отправлено!');
             } else {
-                // console.log('Выкинули исключение');
                 throw res;
             };
         })
         .catch(err => {
             console.log('Получили ошибку с сервера');
-                // console.log('err:', err);
             if(err.errors) {
-                // console.error('err.errors:', err.errors);
                 errorFormHandler(err.errors, sendMessageForm);
             };
         })
@@ -535,14 +504,11 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
     }
     
     function initRegister() {
-        // const buttonOpeningModalRegister = document.querySelector(".menu__register-btn_js");
         const modalRegister = document.querySelector(".register-form_js");
-        // const buttonCloseModalRegister = document.querySelector(".register-form__close-btn_js");
         const loaderRegister = document.querySelector(".preloader__loader_js");
         const registerForm = document.forms.register;
         const registerOverlay = document.querySelector(".register-overlay_js");
         const submitBtn = registerForm.elements.submitButton;
-        // console.log("запрос ушёл на сервер");
     
         let data = {};
         data.email = registerForm.email.value;
@@ -574,19 +540,15 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         .then(res => res.json())
         .then(res => {
             if(res.success) {
-                // console.log('Процесс завершился удачно');
                 emptyFormInputs(textInputFields, registerForm.confirm, submitBtn);
                 closeWindow(modalRegister, 'popup-form_open', registerOverlay, 'popup-overlay_open');
                 alert(`Пользователь с id ${res.data.id} & email ${res.data.email} создан!`);
                 loaderRegister.classList.add('preloader_hidden');
             } else {
-                // console.log('Выкинули исключение');
                 throw res;
             };
         })
         .catch(err => {
-            // console.log('Получили ошибку с сервера');
-            // console.error(err.errors);
             errorFormHandler(err.errors, registerForm);
         })
         .finally(() => {
@@ -596,8 +558,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
     
     function  initSignIn() {
         const modalLogin = document.querySelector(".sign-in-form_js");
-        // const buttonOpenLogin = document.querySelector(".menu__sign-in-btn_js");
-        // const buttonCloseLogin = document.querySelector(".sign-in-form__close-btn_js");
         const loaderSignIn = document.querySelector(".preloader__loader_js");
         const loginForm = document.forms.signIn;
         const loginOverlay = document.querySelector(".sign-in-overlay_js")
@@ -623,9 +583,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
         .then(res => res.json())
         .then(res => {
             if(res.success) {
-                // console.log('Процесс завершился удачно');
-                // console.log('Вы успешно вошли!');
-                // console.log(res);
                 localStorage.setItem('token', res.data.token);
                 localStorage.setItem('userId', res.data.userId);
                 emptyFormInputs(textInputFields);
@@ -636,15 +593,11 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
                     location.pathname = '/pages/profile';
                 }, 2000);
             } else {
-                // console.log('Выкинули исключение');
                 throw res;
             };
         })
         .catch(err => {
-            // console.log('Получили ошибку с сервера');
             if(err._message) {
-                // alert(err._message);
-                // console.log('err._message:', err._message);
                 const errorObj = {"email" : err._message};
                 errorFormHandler(errorObj, loginForm);
             };
@@ -710,10 +663,7 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
             });
             tagsBox.insertAdjacentHTML('beforeend', tagHTML);
         });
-        // console.log('search params not empty:', !!location.search.length);
-        // console.log('search params exist in local storage:', !!localStorage.getItem('searchParams'));
         if(restoreLastFilterSettingsNextTime && !location.search.length && localStorage.getItem('searchParams')) {
-            // console.log('filter settings restored from location');
             location.search = localStorage.getItem('searchParams');
         };
         
@@ -852,7 +802,6 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
             const links = document.querySelector('.pagination_js');
             links.innerHTML = '';
             const pageCount = Math.ceil(response.count / postsByPageCountSelectedLimit);
-            // console.log(pageCount);
             for (let i = 0; i < pageCount; i++) {
                 const link = linkElementCreate(i);
                 links.insertAdjacentElement('beforeend', link);
@@ -945,31 +894,13 @@ function closeWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overl
     function showLoader() {
         loaderCount++;
         mainLoader.classList.remove('preloader_hidden');
-        // console.log(`loader count increased:` + loaderCount);
     };
+
     function hideLoader () {
         loaderCount--;
-        // console.log(`loader count decreased:` + loaderCount);
         if(loaderCount <= 0) {
             mainLoader.classList.add('preloader_hidden');
             loaderCount = 0;
         };
     };
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

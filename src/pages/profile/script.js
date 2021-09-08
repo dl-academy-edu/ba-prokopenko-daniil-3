@@ -67,7 +67,6 @@ popupWindowHandler(null, 'unsuccessfully-form_js',
         })
     });
     window.addEventListener('scroll', (e) => {
-        // console.log(window.pageYOffset);
         if(window.pageYOffset > 1500) {
             button.classList.remove('button-to-top_hidden');
         }
@@ -138,7 +137,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
     let actualProfileData = null;
 
     function sendRequest({url, method = 'GET', headers, body = null}) {
-        // let customBody = null;
         return fetch(BASE_SERVER_PATH + url + '?v=1.0.0', {
             method,
             headers,
@@ -148,8 +146,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
 
     //валидация формы Edit-Data
     (function() {
-        const popupWindow = document.querySelector('.edit-data-form_js');
-        const popupOverlay = document.querySelector('.edit-data-overlay_js');
         const form = document.forms.editData;
         const emailInput = form.elements.email;
         const nameInput = form.elements.name;
@@ -181,7 +177,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
             formNeedsValidation = true;
             areTextInputsValid = validateTextInputs(formNeedsValidation, textInputFields);
             if (areTextInputsValid) {
-                // closeWindow(popupWindow, 'popup-form_open', popupOverlay, 'popup-overlay_open');
                 putEditedDataToServer();
             }
         });
@@ -196,8 +191,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
 
     //валидация формы Edit-Password
     (function() {
-        const popupWindow = document.querySelector('.edit-password-form_js');
-        const popupOverlay = document.querySelector('.edit-password-overlay_js');
         const form = document.forms.editPassword;
         const passwordOldInput = form.elements.oldPassword;
         const passwordNewInput = form.elements.newPassword;
@@ -223,7 +216,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
             formNeedsValidation = true;
             areTextInputsValid = validateTextInputs(formNeedsValidation, textInputFields);
             if (areTextInputsValid) {
-                // closeWindow(popupWindow, 'popup-form_open', popupOverlay, 'popup-overlay_open');
                 putEditedPasswordToServer()
             }
         });
@@ -235,7 +227,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
             });
         });
 
-
     })();
 
     // обработчик проверки текстовых полей ввода
@@ -244,7 +235,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
             return false;
         };
         let checkResult = true;
-
         textInputsArray.forEach((input) => {
             markTextInputAsValid(input);    
             if (!input.isValid()) {
@@ -253,7 +243,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
             };
         });
         return checkResult;
-
     };
 
     // обработчик проверки чекбокса
@@ -281,7 +270,7 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
         if (elm.nextElementSibling.nextElementSibling.nextElementSibling) {
             elm.nextElementSibling.nextElementSibling.nextElementSibling.remove();
         };
-    }
+    };
 
     // маркировщик чекбокса, прошедшего проверку
     function markCheckboxInputAsValid(elm) {
@@ -295,7 +284,7 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
         if (!elm.nextElementSibling.classList.contains("checkbox-input-error")) {
             elm.nextElementSibling.classList.add("checkbox-input-error");
         };
-    }
+    };
 
     //блокировщик-разблокировщик кнопки submit
     function submitButtonUnBlocker(confirmInput, submitBtn) {
@@ -347,12 +336,12 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
     };
 
     (function initProfilePageData() {
-        const passwordEditingModal = document.querySelector(".edit-password-form_js");
-        const dataEditingModal = document.querySelector(".edit-data-form_js");
-        const preloader = document.querySelector(".preloader__loader_js");
-        const buttonOpeningPasswordEditingModal = document.querySelector(".edit-password-btn_js");
+        // const passwordEditingModal = document.querySelector(".edit-password-form_js");
+        // const dataEditingModal = document.querySelector(".edit-data-form_js");
+        // const preloader = document.querySelector(".preloader__loader_js");
+        // const buttonOpeningPasswordEditingModal = document.querySelector(".edit-password-btn_js");
         const buttonOpeningDataEditingModal = document.querySelector(".edit-data-btn_js");
-        const passwordEditingForm = document.forms.editPassword;
+        // const passwordEditingForm = document.forms.editPassword;
         const dataEditingForm = document.forms.editData;
         const signOutBtn = document.querySelector(".sign-out-btn_js");
         const deleteAccountBtn = document.querySelector(".delete-account-btn_js");
@@ -406,7 +395,7 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
                     console.log('Получили ошибку с сервера');
                     console.log('error:', err);
                     console.log('error message:', err._message);
-                })
+                });
             };
         })
     
@@ -420,7 +409,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
             .then(res => {
                 if(res.success) {
                     actualProfileData = res.data;
-                    // console.log('actualProfileData after GetProfile 1:', actualProfileData);
                     renderProfile(actualProfileData);
                     } else {
                     location.pathname = '/';
@@ -433,7 +421,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
     })();
     
     function putEditedPasswordToServer() {
-        const preloader = document.querySelector(".preloader__loader_js");
         const passwordEditingModal = document.querySelector(".edit-password-form_js");
         const passwordEditingOverlay = document.querySelector(".edit-password-overlay_js");
         const successfullyModal = document.querySelector(".successfully-form_js");
@@ -475,26 +462,19 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
             if(res.success) {
                 console.log('Процесс завершился удачно');
                 actualProfileData = res.data;
-                // console.log('actualProfileData:', actualProfileData);
                 renderProfile(actualProfileData);
                 emptyFormInputs(textInputFields);
                 closeWindow(passwordEditingModal, 'popup-form_open', passwordEditingOverlay, 'popup-overlay_open');
                 openWindow(successfullyModal, 'popup-form_open', successfullyOverlay, 'popup-overlay_open');
-                // rerenderPasswordEditingFormValuesFromProfile(passwordEditingForm, actualProfileData);
                 setTimeout(() => {
                     closeWindow(successfullyModal, 'popup-form_open', successfullyOverlay, 'popup-overlay_open');
                 }, 2000);
             } else {
-                // console.log('Выкинули исключение');
                 throw res;
             }
         })
         .catch(err => {
-            // console.log('Получили ошибку с сервера');
-            // console.log('error:', err);
-            // console.log('error message:', err._message);
             if(err._message) {
-                // alert(err._message);
                 unsuccessfullyErrorMessage.innerText = err._message;
             } else if(err._message === "") {
                 unsuccessfullyErrorMessage.innerText = 'Unknown erorr';
@@ -508,11 +488,10 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
         })
         .finally(() => {
             hidePreloader();
-        })
-    }
+        });
+    };
     
     function putEditedDataToServer() {
-        const preloader = document.querySelector(".preloader__loader_js");
         const dataEditingModal = document.querySelector(".edit-data-form_js");
         const dataEditingOverlay = document.querySelector(".edit-data-overlay_js");
         const successfullyModal = document.querySelector(".successfully-form_js");
@@ -547,7 +526,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
           if(res.success) {
             console.log('Процесс завершился удачно');
             actualProfileData = res.data;
-            // console.log('actualProfileData:', actualProfileData);
             renderProfile(actualProfileData);   
             closeWindow(dataEditingModal, 'popup-form_open', dataEditingOverlay, 'popup-overlay_open');
             openWindow(successfullyModal, 'popup-form_open', successfullyOverlay, 'popup-overlay_open');
@@ -569,7 +547,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
             errorFormHandler(err.errors, dataEditingForm);
         };
         if(err._message) {
-            // alert(err._message);
             unsuccessfullyErrorMessage.innerText = err._message;
             closeWindow(dataEditingModal, 'popup-form_open', dataEditingOverlay, 'popup-overlay_open');
             openWindow(unsuccessfullyModal, 'popup-form_open', unsuccessfullyOverlay, 'popup-overlay_open');
@@ -583,15 +560,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
         });
     };
     
-    // //функция для отладки при выключенной валидации формы
-    // (function bypassValidationEditData() {
-    //     const form = document.forms.editData;
-    //     form.addEventListener("submit", (e) => {
-    //         e.preventDefault();
-    //         putEditedDataToServer();
-    //     });
-    // })();
-    
     function rerenderDataEditingFormValuesFromProfile(form, profile) {
         form.email.value = profile.email;
         form.name.value = profile.name;
@@ -599,7 +567,7 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
         form.surname.value = profile.surname;
         form.location.value = profile.location;
         form.age.value = profile.age;
-    }
+    };
     
     function unHidePreloader() {
         const preloader = document.querySelector(".preloader__loader_js");
@@ -647,7 +615,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
     };
     
     function showErrorMessageFromServer(input, messageError) {
-        // console.log("ошибка записана в соответсвующее поле")
         markTextInputAsInvalid(input);
         let errorElement = document.createElement('div');
         errorElement.classList.add('text-input-error');
@@ -703,7 +670,6 @@ function openWindow(popupWindow, windowUnhideClass, popupOverlay = false, Overla
         };
     };
     
-
 })();
 
 
