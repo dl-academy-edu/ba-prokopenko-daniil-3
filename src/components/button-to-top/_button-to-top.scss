@@ -1,0 +1,14 @@
+.button-to-top {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    svg {
+        display: block;
+    }
+    &_hidden {
+        display: none;
+    }
+}

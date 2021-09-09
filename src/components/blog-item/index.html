@@ -1,0 +1,33 @@
+<section class="myblog__main-item blog-item">
+    <!-- <div class="blog-item__img-wrapper">
+        <img class="blog-item__img blog-item__img_desctop" src="@@image-desctop-url" alt="" width="320" height="@@image-desctop-height">
+        <img class="blog-item__img blog-item__img_tablet" src="@@image-tablet-url" alt="" width="314" height="@@image-tablet-height">
+        <img class="blog-item__img blog-item__img_mobile" src="@@image-mobile-url" alt="" width="280" height="@@image-mobile-height">        
+    </div> -->
+    <picture class="blog-item__img-wrapper">
+        <source class="blog-item__img" media="screen and (min-width: 1200px)" srcset="@@image-desctop-url">
+        <source class="blog-item__img" media="screen and (min-width: 768px) and (max-width: 1199px)" srcset="@@image-tablet-url">
+        <source class="blog-item__img" media="screen and (max-width: 767px)" srcset="@@image-mobile-url">
+        <img class="blog-item__img" src="@@image-desctop-url" alt="">
+    </picture>
+    <div class="blog-item__text-block">
+        <div class="blog-item__tags">
+            <div class="blog-item__tags-item blog-item__tags-item-1 blog-item__tags-item-@@hide-tag-1"></div>
+            <div class="blog-item__tags-item blog-item__tags-item-2 blog-item__tags-item-@@hide-tag-2"></div>
+            <div class="blog-item__tags-item blog-item__tags-item-3 blog-item__tags-item-@@hide-tag-3"></div>
+            <div class="blog-item__tags-item blog-item__tags-item-4 blog-item__tags-item-@@hide-tag-4"></div>
+            <div class="blog-item__tags-item blog-item__tags-item-5 blog-item__tags-item-@@hide-tag-5"></div>
+            <div class="blog-item__tags-item blog-item__tags-item-6 blog-item__tags-item-@@hide-tag-6"></div>
+            <div class="blog-item__tags-item blog-item__tags-item-7 blog-item__tags-item-@@hide-tag-7"></div>
+            <div class="blog-item__tags-item blog-item__tags-item-8 blog-item__tags-item-@@hide-tag-8"></div>
+        </div>
+        <div class="blog-item__dates">
+            <div class="blog-item__dates-item blog-item__post-date">@@post-date</div>
+            <div class="blog-item__dates-item blog-item__post-views">@@post-views</div>
+            <div class="blog-item__dates-item blog-item__post-comments">@@post-comments</div>
+        </div>
+        <h3 class="blog-item__title">@@title</h3>
+        <p class="blog-item__text">@@text</p>
+        <a class="blog-item__link" href="@@link">Go to this post</a>
+    </div>
+</section>

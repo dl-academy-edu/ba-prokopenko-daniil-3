@@ -1,0 +1,26 @@
+.register-form {
+    width: 680px;
+    min-height: 533px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .register-form {
+        &__close-btn {
+            right: 0px;
+			top: -35px;
+		}
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .register-form {
+        width: 100%;
+        height: 568px;
+        &__form {
+            padding-top: 120px;
+        }
+        &__close-btn {
+			top: 20px;
+		}
+    }
+}

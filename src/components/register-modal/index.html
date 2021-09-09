@@ -1,0 +1,64 @@
+<div class="popup-overlay register-overlay_js"></div>
+<div class="popup-form register-form register-form_js">
+    <button type="button" class="popup-form__close-btn register-form__close-btn register-form__close-btn_js">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2.82855" width="32" height="4" rx="2" transform="rotate(45 2.82855 0)" fill="#828282"/>
+            <rect x="-6.10352e-05" y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 -6.10352e-05 22.6289)" fill="#828282"/>
+        </svg>                                                         
+    </button>
+    <form action="#" method="POST" class="register-form__form" name = "register">
+        <div class="popup-form__fieldset register-form__fieldset">                    
+            <label class="popup-form__label" for="register-form__email">Email <span class="required-field-common">*</span></label>
+            <input class="text-input-field-common popup-form__input-field" type="email" id="register-form__email" name = "email">
+            <div class="text-input-error hidden">Please enter a valid email address (your entry is not in the format "somebody@example.com")</div>
+            <div class="text-input-checked hidden">All right</div>
+        </div>
+        <div class="popup-form__wrapper register-form__wrapper">
+            <div class="popup-form__fieldset register-form__fieldset popup-form__fieldset-block">
+                <label class="popup-form__label" for="register-form__name">Name  <span class="required-field-common">*</span></label>
+                <input class="text-input-field-common popup-form__input-field" type="text" id="register-form__name" name = "name">
+                <div class="text-input-error hidden">This field is required</div>
+                <div class="text-input-checked hidden">All right</div>
+            </div>
+            <div class="popup-form__fieldset register-form__fieldset popup-form__fieldset-block">
+                <label class="popup-form__label" for="register-form__surname">Surname  <span class="required-field-common">*</span></label>
+                <input class="text-input-field-common popup-form__input-field" type="text" id="register-form__surname" name = "surname">
+                <div class="text-input-error hidden">This field is required</div>
+                <div class="text-input-checked hidden">All right</div>
+            </div>
+        </div>
+        <div class="popup-form__wrapper register-form__wrapper">
+            <div class="popup-form__fieldset register-form__fieldset popup-form__fieldset-block">
+                <label class="popup-form__label" for="register-form__password">Password  <span class="required-field-common">*</span></label>
+                <input class="text-input-field-common popup-form__inpu-field" type="password" id="register-form__password" name = "password">
+                <div class="text-input-error hidden">Password is to short (at least 6 symbols required)</div>
+                <div class="text-input-checked hidden">All right</div>
+            </div>
+            <div class="popup-form__fieldset register-form__fieldset popup-form__fieldset-block">
+                <label class="popup-form__label" for="register-form__password-repeat">Repeat password  <span class="required-field-common">*</span></label>
+                <input class="text-input-field-common popup-form__input-field" type="password" id="register-form__password-repeat" name = "passwordRepeat">
+                <div class="text-input-error hidden">Password is to short or does not match.</div>
+                <div class="text-input-checked hidden">All right</div>
+            </div>
+        </div>
+        <div class="popup-form__wrapper register-form__wrapper">
+            <div class="popup-form__fieldset register-form__fieldset popup-form__fieldset-block">
+                <label class="popup-form__label" for="register-form__location">Location  <span class="required-field-common">*</span></label>
+                <input class="text-input-field-common popup-form__input-field" type="text" id="register-form__location" name = "location">
+                <div class="text-input-error hidden">This field is required</div>
+                <div class="text-input-checked hidden">All right</div>
+            </div>
+            <div class="popup-form__fieldset register-form__fieldset popup-form__fieldset-block">
+                <label class="popup-form__label" for="register-form__age">Age  <span class="required-field-common">*</span></label>
+                <input class="text-input-field-common popup-form__input-field" type="text" id="register-form__age" name = "age">
+                <div class="text-input-error hidden">Please enter correct age</div>
+                <div class="text-input-checked hidden">All right</div>
+            </div>
+        </div>
+        <div class="popup-form__fieldset register-form__fieldset">
+            <input type = "checkbox" id="register-form__confirm" value = "confirm" name = "confirm">
+            <label for="register-form__confirm" class="popup-form__label popup-form__label-confirm">Clicking on the button, you consent to the processing of your personal data.</label>
+        </div>
+        <button type="submit" class="button button-colorsheme-confirm register-form__sign-in-btn" name = "submitButton" disabled>Sign up</button>
+    </form>
+</div>

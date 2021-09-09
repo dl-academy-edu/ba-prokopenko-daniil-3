@@ -1,0 +1,89 @@
+.header {
+    display: block;
+    background-color: white;
+    padding: 32px 0;
+    border-bottom: #828282 solid 1px;
+    
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__menu {
+        display: flex;
+        &-item {
+            a {
+                color: #828282;
+                &:hover {color:#070707}                    
+            }
+            &_hidden {
+                display: none;
+            }
+            &_current a {
+                font-weight: 700;
+                color:#070707;
+                &:hover {color:#828282;} 
+            }
+        }
+        &-item:not(:last-child) {
+            padding-right: 20px;
+        }
+    }
+    &__popup-menu {
+        &-close-btn {
+            display: none;
+        }
+    }
+}
+
+// @media screen and (min-width: 1200px) {
+// }
+
+// @media screen and (min-width: 768px) and (max-width: 1199px) {
+// }
+
+@media screen and (max-width: 767px) {
+    .header {
+        display: none;
+        // position: absolute;
+        padding: 50px 20px;
+        border: none;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+        min-height: 812px;
+        // width: 100%;
+        z-index: 1;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%,-50%);
+
+        &__nav {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-end;
+            min-height: 400px;
+            padding: 70px 0 50px 0;
+            margin-top: 50px;
+        }
+        &__menu {
+            flex-direction: column;
+            justify-content: start;
+            align-items: flex-end;
+
+            &-item {
+                padding-bottom: 20px;
+            }
+            &-item:not(:last-child) {
+                padding-right: 0px;
+            }
+        }
+        &__popup-menu {
+            &-close-btn {
+                display: block;
+                position: absolute;
+                padding-bottom: 20px;
+            }
+        }
+    }
+    .popup-menu_open {display: flex;}
+}

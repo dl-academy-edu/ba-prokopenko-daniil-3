@@ -1,0 +1,48 @@
+<div class="popup-overlay send-message-overlay_js"></div>
+<div class="popup-form send-message-form send-message-form_js">
+    <button type="button" class="popup-form__close-btn send-message-form__close-btn send-message-form__close-btn_js">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2.82855" width="32" height="4" rx="2" transform="rotate(45 2.82855 0)" fill="#828282"/>
+            <rect x="-6.10352e-05" y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 -6.10352e-05 22.6289)" fill="#828282"/>
+        </svg>                                                         
+    </button>
+    <form action="#" method="POST" class="send-message-form__form" name = "sendMessage">
+        <div class="popup-form__wrapper send-message-form__wrapper">
+            <div class="popup-form__fieldset send-message-form__fieldset popup-form__fieldset-block">
+                <label class="popup-form__label" for="send-message-form__name">What is your name?  <span class="required-field-common">*</span></label>
+                <input class="text-input-field-common popup-form__input-field" type="text" id="send-message-form__name" name = "name">
+                <div class="text-input-error hidden">This field is required</div>
+                <div class="text-input-checked hidden">All right</div>
+            </div>
+            <div class="popup-form__fieldset send-message-form__fieldset popup-form__fieldset-block">
+                <label class="popup-form__label" for="send-message-form__subject">Message subject  <span class="required-field-common">*</span></label>
+                <input class="text-input-field-common popup-form__input-field" type="text" id="send-message-form__subject" name = "subject">
+                <div class="text-input-error hidden">This field is required</div>
+                <div class="text-input-checked hidden">All right</div>
+            </div>
+        </div>
+        <div class="popup-form__wrapper send-message-form__wrapper">
+            <div class="popup-form__fieldset send-message-form__fieldset popup-form__fieldset-block">
+                <label class="popup-form__label" for="send-message-form__email">Your Email <span class="required-field-common">*</span></label>
+                <input class="text-input-field-common popup-form__input-field" type="email" id="send-message-form__email" name = "to">
+                <div class="text-input-error hidden">Please enter a valid email address (your entry is not in the format "somebody@example.com")</div>
+                <div class="text-input-checked hidden">All right</div>
+            </div>
+            <div class="popup-form__fieldset send-message-form__fieldset popup-form__fieldset-block">
+                <label class="popup-form__label" for="send-message-form__phone">Your mobile phone  <span class="required-field-common">*</span></label>
+                <input class="text-input-field-common popup-form__input-field" type="tel" id="send-message-form__phone" name = "phone">
+                <div class="text-input-error hidden">Please enter a valid phone number</div>
+                <div class="text-input-checked hidden">All right</div>
+            </div>
+        </div>
+        <div class="popup-form__fieldset send-message-form__fieldset">                    
+            <label class="popup-form__label" for="send-message-form__message">What do you want to discuss with me?</label>
+            <textarea class="text-input-field-common popup-form__textarea send-message-form__textarea" name="message" id="send-message-form__message"></textarea>
+        </div>
+        <div class="popup-form__fieldset send-message-form__fieldset">
+            <input type="checkbox"  id="send-message-form__confirm" value="confirm" name="confirm">
+            <label for="send-message-form__confirm" class="popup-form__label popup-form__label-confirm">Clicking on the button, you consent to the processing of your personal data.</label>
+        </div>
+        <button type="submit" class="button button-colorsheme-confirm send-message-form__send-btn" name = "submitButton" disabled>Send</button>
+    </form>
+</div>

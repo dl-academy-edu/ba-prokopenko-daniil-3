@@ -1,0 +1,101 @@
+<div class="container naming__slider">
+                <div class="slider slider_js">
+                    <div class="slider__wrapper naming__slider-wrapper slider__wrapper_js">
+                        <div class="slider__inner-wrapper slider__inner-wrapper_js">
+
+                            <!-- <img draggable="false" unselectable="on" class="slider__slide slider__slide_js" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" >
+                            <img draggable="false" unselectable="on" class="slider__slide slider__slide_js" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" >
+                            <img draggable="false" unselectable="on" class="slider__slide slider__slide_js" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" >
+                            <img draggable="false" unselectable="on" class="slider__slide slider__slide_js" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" > -->
+
+                            <!-- <picture draggable="false" unselectable="on" class="slider__slide slider__slide_js">
+                                <source draggable="false" unselectable="on" media="screen and (min-width: 1200px)" srcset="/static/images/portrait_desctop.jpg, /static/images/portrait_desctop@2x.jpg 2x" class="naming__portrait-img_desctop slider__slide-element">
+                                <source draggable="false" unselectable="on" media="screen and (min-width: 768px) and (max-width: 1199px)" srcset="/static/images/portrait_tablet.jpg, /static/images/portrait_tablet@2x.jpg 2x" class="naming__portrait-img_tablet slider__slide-element">
+                                <source draggable="false" unselectable="on" media="screen and (max-width: 767px)" srcset="/static/images/portrait_mobile.jpg, /static/images/portrait_mobile.jpg@2x 2x" class="naming__portrait-img_mobile slider__slide-element">
+                                <img draggable="false" unselectable="on" class="delivery__portrait-img-desctop" src="/static/images/portrait_desctop.jpg" alt="Portrait">
+                            </picture>
+                            <picture draggable="false" unselectable="on" class="slider__slide slider__slide_js">
+                                <source draggable="false" unselectable="on" media="screen and (min-width: 1200px)" srcset="/static/images/portrait_desctop.jpg, /static/images/portrait_desctop@2x.jpg 2x" class="naming__portrait-img_desctop slider__slide-element">
+                                <source draggable="false" unselectable="on" media="screen and (min-width: 768px) and (max-width: 1199px)" srcset="/static/images/portrait_tablet.jpg, /static/images/portrait_tablet@2x.jpg 2x" class="naming__portrait-img_tablet slider__slide-element">
+                                <source draggable="false" unselectable="on" media="screen and (max-width: 767px)" srcset="/static/images/portrait_mobile.jpg, /static/images/portrait_mobile.jpg@2x 2x" class="naming__portrait-img_mobile slider__slide-element">
+                                <img class="delivery__portrait-img-desctop" src="/static/images/portrait_desctop.jpg" alt="Portrait">
+                            </picture>
+                            <picture draggable="false" unselectable="on" class="slider__slide slider__slide_js">
+                                <source draggable="false" unselectable="on" media="screen and (min-width: 1200px)" srcset="/static/images/portrait_desctop.jpg, /static/images/portrait_desctop@2x.jpg 2x" class="naming__portrait-img_desctop slider__slide-element">
+                                <source draggable="false" unselectable="on" media="screen and (min-width: 768px) and (max-width: 1199px)" srcset="/static/images/portrait_tablet.jpg, /static/images/portrait_tablet@2x.jpg 2x" class="naming__portrait-img_tablet slider__slide-element">
+                                <source draggable="false" unselectable="on" media="screen and (max-width: 767px)" srcset="/static/images/portrait_mobile.jpg, /static/images/portrait_mobile.jpg@2x 2x" class="naming__portrait-img_mobile slider__slide-element">
+                                <img draggable="false" unselectable="on" class="delivery__portrait-img-desctop" src="/static/images/portrait_desctop.jpg" alt="Portrait">
+                            </picture>
+                            <picture draggable="false" unselectable="on" class="slider__slide slider__slide_js">
+                                <source draggable="false" unselectable="on" media="screen and (min-width: 1200px)" srcset="/static/images/portrait_desctop.jpg, /static/images/portrait_desctop@2x.jpg 2x" class="naming__portrait-img_desctop slider__slide-element">
+                                <source draggable="false" unselectable="on" media="screen and (min-width: 768px) and (max-width: 1199px)" srcset="/static/images/portrait_tablet.jpg, /static/images/portrait_tablet@2x.jpg 2x" class="naming__portrait-img_tablet slider__slide-element">
+                                <source draggable="false" unselectable="on" media="screen and (max-width: 767px)" srcset="/static/images/portrait_mobile.jpg, /static/images/portrait_mobile.jpg@2x 2x" class="naming__portrait-img_mobile slider__slide-element">
+                                <img draggable="false" unselectable="on" class="delivery__portrait-img-desctop" src="/static/images/portrait_desctop.jpg" alt="Portrait">
+                            </picture> -->
+
+
+                            <!-- <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_desctop" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" >
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_tablet" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465" >
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_mobile" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465" >
+                            </div>
+                            <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_desctop" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" >
+                                <img draggable="false"unselectable="on" class="naming__portrait-img_tablet" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465" >
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_mobile" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465" >
+                            </div>
+                            <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_desctop" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" >
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_tablet" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465" >
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_mobile" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465" >
+                            </div>
+                            <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_desctop" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" >
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_tablet" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465" >
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_mobile" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465" >
+                            </div>
+                            <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_desctop" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" >
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_tablet" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465" >
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_mobile" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465" >
+                            </div> -->
+
+
+                            <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_desctop" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" 
+								   srcset="/static/images/portrait_desctop.jpg 1x, /static/images/portrait_desctop@2x.jpg 2x">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_tablet" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465"
+								    srcset="/static/images/portrait_tablet.jpg 1x, /static/images/portrait_tablet@2x.jpg 2x">								
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_mobile" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465"
+									srcset="/static/images/portrait_mobile.jpg 1x, /static/images/portrait_mobile@2x.jpg 2x">
+                            </div>
+                            <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_desctop" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" 
+								   srcset="/static/images/portrait_desctop.jpg 1x, /static/images/portrait_desctop@2x.jpg 2x">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_tablet" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465"
+								    srcset="/static/images/portrait_tablet.jpg 1x, /static/images/portrait_tablet@2x.jpg 2x">								
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_mobile" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465"
+									srcset="/static/images/portrait_mobile.jpg 1x, /static/images/portrait_mobile@2x.jpg 2x">
+                            </div>
+                            <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_desctop" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" 
+								   srcset="/static/images/portrait_desctop.jpg 1x, /static/images/portrait_desctop@2x.jpg 2x">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_tablet" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465"
+								    srcset="/static/images/portrait_tablet.jpg 1x, /static/images/portrait_tablet@2x.jpg 2x">								
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_mobile" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465"
+									srcset="/static/images/portrait_mobile.jpg 1x, /static/images/portrait_mobile@2x.jpg 2x">
+                            </div>
+                            <div class="slider__slide slider__slide_js">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_desctop" src="/static/images/portrait_desctop.jpg" alt="Foto" width="1000" height="465" 
+								   srcset="/static/images/portrait_desctop.jpg 1x, /static/images/portrait_desctop@2x.jpg 2x">
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_tablet" src="/static/images/portrait_tablet.jpg" alt="Foto" width="648" height="465"
+								    srcset="/static/images/portrait_tablet.jpg 1x, /static/images/portrait_tablet@2x.jpg 2x">								
+                                <img draggable="false" unselectable="on" class="naming__portrait-img_mobile" src="/static/images/portrait_mobile.jpg" alt="Foto" width="280" height="465"
+									srcset="/static/images/portrait_mobile.jpg 1x, /static/images/portrait_mobile@2x.jpg 2x">
+                            </div>
+                        </div>
+                    </div>
+
+                    @@include('pagination-dotted/index.html')
+                </div>
+            </div>
