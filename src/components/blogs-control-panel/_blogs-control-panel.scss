@@ -3,9 +3,6 @@
     &__row {
         display: flex;
     }
-    &__row-1 {
-
-    }
     label {
         font-weight: 500;
     }
@@ -33,19 +30,9 @@
             width: 30px;
             height: 30px;
         }
-
         input[type="checkbox"]:checked + .checkbox-label-tag path {
             stroke-opacity: 100%
         }
-
-        // @for $i from 1 through 8 {
-        //     .checkbox-label-tag-#{$i} {
-        //         background: url(/static/images/checkbox-tag-#{$i}.svg) no-repeat 0 0;
-        //     }
-        //     input[type="checkbox"]:checked + .checkbox-label-tag-#{$i} {
-        //         background: url(/static/images/checkbox-tag-#{$i}-checked.svg) no-repeat 0 0;
-        //     }
-        // }
         .radio-label {
             background: url(/static/images/radio.svg) no-repeat 0 0;
         }
@@ -70,18 +57,6 @@
             display: flex;
             flex-wrap: wrap;
         }
-    }
-    &__column-views {
-
-    }
-    &__column-comments {
-
-    }
-    &__column-howshow {
-
-    }
-    &__column-sortby {
-
     }
     &__row-2 {
         justify-content: space-between;
