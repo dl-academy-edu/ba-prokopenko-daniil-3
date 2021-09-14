@@ -10,8 +10,6 @@
         }
     }
     &__portrait-img {
-        &-wrapper {
-        }
         &_desctop {
             user-select: none;  
         }
@@ -130,14 +128,10 @@
     &__wrapper {
         position: relative;
     }
-    &__list {
-        
-    }
     &__item {
         &_hidden {
             display: none;
         }
-
     }
     &__btn {
         position: absolute;
@@ -195,23 +189,18 @@
             max-width: 30%;
             &-wrapper {
                 margin-bottom: 36px;
-                
                 align-items: flex-end;
             }
         }
         &__description {
             max-width: 60%;
             &-wrapper {
-
                 padding: 10 0px;
             }
         }
         &__portrait-img {
             &-wrapper {
                 margin-bottom: 30px;
-            }
-            &_desctop {
-    
             }
             &_tablet {
                 display: none;
@@ -225,9 +214,6 @@
         }
     }
     .portfolio {
-        &__img_desctop {
-
-        }
         &__img_tablet {
             display: none;
         }
@@ -235,8 +221,6 @@
             display: none;
         }
     }
-    
-
 }
 
 
@@ -247,14 +231,12 @@
             max-width: 50%;
             &-wrapper {
                 margin-bottom: 36px;
-                
                 align-items: flex-end;
             }
         }
         &__description {
             max-width: 70%;
             &-wrapper {
-
                 padding: 10px 0;
             }
         }
@@ -264,9 +246,6 @@
             }
             &_desctop {
                 display: none;
-            }
-            &_tablet {
-                
             }
             &_mobile {
                 display: none;
@@ -286,9 +265,6 @@
     .portfolio {
         &__img_desctop {
             display: none;
-        }
-        &__img_tablet {
-            
         }
         &__img_mobile {
             display: none;
@@ -326,17 +302,11 @@
             &_tablet {
                 display: none;
             }
-            &_mobile {
-                
-            }
         }
         &__slider-wrapper {
             margin-bottom: 30px;
         }
     }
-    // .mobile__menu-burger {
-    //     display: block;
-    // }
     .about {
         padding: 40px 0;
         &__title {
@@ -367,9 +337,6 @@
         &__img_tablet {
             display: none;
         }
-        &__img_mobile {
-            
-        }
         &__btn {
             transform: translateY(-21.5px);
             &-fwd {
@@ -387,10 +354,3 @@
         }
     }
 }
-
-// .swiper {
-// 	&-button-next, &-button-prev {
-// 		color: #070707;
-// 		font-size: 40px;
-// 	}
-// }
